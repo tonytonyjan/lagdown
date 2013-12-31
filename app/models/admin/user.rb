@@ -8,6 +8,7 @@ class Admin::User < User
   # Attributes related macros
 
   # association macros
+  has_many :posts, class_name: Admin::Post
 
   # validation macros
 

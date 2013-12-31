@@ -6,12 +6,15 @@ class User < ActiveRecord::Base
   # scope macros
 
   # Concerns macros
+  include Select2Concern
 
   # Constants
   
   # Attributes related macros
+  select2_white_list :email
 
   # association macros
+  has_many :posts
 
   # validation macros
 
