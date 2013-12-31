@@ -1,0 +1,10 @@
+<div class="page-header">
+  <%= link_to_if can?(:create, Admin::Administrator), t('crud.new!', resource: Admin::Administrator.model_name.human), new_admin_administrator_path, class: 'btn btn-primary btn-lg pull-right' %>
+  <h1><%= Admin::Administrator.model_name.human %></h1>
+</div>
+
+<%= paginate @admin_administrators %>
+
+<%= table_for @admin_administrators, :email, class: 'table table-striped' %>
+
+<%= paginate @admin_administrators %>

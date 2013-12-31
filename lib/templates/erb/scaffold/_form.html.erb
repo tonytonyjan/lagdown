@@ -1,0 +1,13 @@
+<%%= simple_form_for(@<%= singular_table_name %>, bootstrap_form_options(form_class: 'form-horizontal')) do |f| %>
+  <%%= f.error_notification class: 'alert alert-danger' %>
+
+  <div class="form-inputs">
+  <%- attributes.each do |attribute| -%>
+    <%%= f.<%= attribute.reference? ? :association : :input %> :<%= attribute.name %> %>
+  <%- end -%>
+  </div>
+
+  <div class="form-actions">
+    <%%= f.button :submit, class: 'btn btn-lg btn-primary' %>
+  </div>
+<%% end %>

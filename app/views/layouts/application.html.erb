@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Lagdown</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <div>
+    <p><%= flash[:notice] %></p>
+    <p><%= flash[:alert] %></p>
+  </div>
+  <nav>
+    <ul>
+      <% if user_signed_in? %>
+        <li><%= link_to 'Sign out', destroy_user_session_path, method: :delete %></li>
+      <% else %>
+        <li><%= link_to 'Sign in', new_user_session_path %></li>
+      <% end %>
+    </ul>
+  </nav>
+  <%= yield %>
+
+</body>
+</html>

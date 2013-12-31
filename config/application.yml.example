@@ -1,0 +1,24 @@
+defaults: &defaults
+  flowdock:
+    api_token: API_TOKEN
+
+development:
+  <<: *defaults
+  recipient: foo@gmail.com
+  http_auth_name: admin
+  http_auth_password: "12345"
+  smtp_settings:
+    address: smtp.gmail.com
+    port: 587
+    user_name: foo@gmail.com
+    password: PASSWORD
+    authentication: plain
+    enable_starttls_auto: true
+
+test:
+  <<: *defaults
+
+production: &production
+  <<: *defaults
+  http_auth_name: xxx
+  http_auth_password: yyy

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= t('sitename') %></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%= stylesheet_link_tag    "admin", media: "all", "data-turbolinks-track" => true %>
+    <%= javascript_include_tag "admin", "data-turbolinks-track" => true %>
+    <%= csrf_meta_tags %>
+  </head>
+  <%= content_tag :body, data: {controller: controller_path, action: action_name} do %>
+    <%= render 'layouts/admin/navbar' %>
+    <div class="container">
+      <%= notice_message %>
+      <%= yield %>
+    </div>
+  <% end %>
+</html>

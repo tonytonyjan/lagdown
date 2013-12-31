@@ -1,0 +1,12 @@
+<%= simple_form_for(@admin_administrator, bootstrap_form_options(form_class: 'form-horizontal')) do |f| %>
+  <%= f.error_notification class: 'alert alert-danger' %>
+
+  <div class="form-inputs">
+    <%= f.input :email %>
+    <%= f.input :password %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, class: 'btn btn-lg btn-primary' %>
+  </div>
+<% end %>

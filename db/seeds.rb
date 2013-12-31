@@ -1,0 +1,1 @@
+Admin::Administrator.create email: 'admin@lagdown.com', password: '12345678'

@@ -1,0 +1,3 @@
+<%= dl_for @admin_administrator, :email %>
+<%= link_to_if can?(:edit, @admin_administrator), t('crud.edit'), edit_admin_administrator_path(@admin_administrator) %> |
+<%= link_to t('action.back'), admin_administrators_path %>

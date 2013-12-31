@@ -1,0 +1,8 @@
+<div class="page-header">
+  <h1><%%= t('crud.edit!', resource: <%= class_name %>.model_name.human).titleize %></h1>
+</div>
+
+<%%= render 'form' %>
+
+<%%= link_to t('crud.show'), @<%= singular_table_name %> %> |
+<%%= link_to t('action.back'), <%= index_helper %>_path %>

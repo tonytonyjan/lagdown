@@ -1,0 +1,8 @@
+<div class="page-header">
+  <h1><%= t('crud.edit!', resource: Admin::User.model_name.human).titleize %></h1>
+</div>
+
+<%= render 'form' %>
+
+<%= link_to t('crud.show'), @admin_user %> |
+<%= link_to t('action.back'), admin_users_path %>

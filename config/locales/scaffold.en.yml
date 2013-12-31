@@ -1,0 +1,24 @@
+en:
+  action:
+    back: Back
+  message:
+    are_you_sure: Are you sure?
+  crud:
+    new!: new %{resource}
+    new: new
+    create!: create %{resource}
+    create: create
+    show!: show %{resource}
+    show: show
+    read!: show %{resource}
+    read: show
+    edit!: edit %{resource}
+    edit: edit
+    update!: update %{resource}
+    update: update
+    delete!: delete %{resource}
+    delete: delete
+    destroy!: destroy %{resource}
+    destroy: destroy
+    created_successfully!: "%{name} created successfully"
+    updated_successfully!: "%{name} updated successfully"
