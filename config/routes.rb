@@ -7,5 +7,6 @@ Lagdown::Application.routes.draw do
     devise_for :administrators, class_name: Admin::Administrator, singular: :administrator
     resources :administrators
     resources :users
+    resources :posts
   end
 end

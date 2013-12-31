@@ -13,7 +13,7 @@
   <!-- Collect the nav links, forms, and other content for toggling -->
   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
     <ul class="nav navbar-nav">
-      <% [Admin::Administrator, Admin::User].each do |model|  %>
+      <% [Admin::Administrator, Admin::User, Admin::Post].each do |model|  %>
         <%= nav_li_for model %>
       <% end %>
     </ul>
