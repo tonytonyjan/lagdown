@@ -52,6 +52,7 @@ gem 'settingslogic'
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
+gem 'omniauth-github'
 
 # paginate
 gem 'kaminari'
