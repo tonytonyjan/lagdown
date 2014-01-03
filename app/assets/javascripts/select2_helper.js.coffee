@@ -1,6 +1,8 @@
 $(document).on 'ready page:change', () ->
   $('.select2').select2
     width: '100%'
+  $('.select2-single').select2
+    width: '100%'
     initSelection: (element, callback) ->
       callback
         id: element.val()
