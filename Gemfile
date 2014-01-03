@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+source 'https://rails-assets.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.2'
@@ -52,9 +53,11 @@ gem 'settingslogic'
 gem 'kaminari'
 
 # assets
+gem 'rails-assets-bootstrap'
+gem 'rails-assets-select2'
+gem 'rails-assets-font-awesome'
+gem 'rails-assets-jquery-ui'
+
+# form
 gem 'simple_form'
 gem 'nested_form'
-gem 'font-awesome-sass'
-gem 'bootstrap-sass'
-gem 'select2-rails'
-gem 'jquery-ui-rails'
