@@ -66,10 +66,11 @@ gem 'rails-assets-jquery-ui'
 gem 'simple_form'
 gem 'nested_form'
 
+gem 'flowdock'
+
 group :development, :test do
   gem 'capistrano'
   gem 'capistrano-rvm'
   gem 'capistrano-bundler'
   gem 'capistrano-rails'
-  gem 'flowdock'
 end
