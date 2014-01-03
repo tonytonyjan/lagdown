@@ -1,3 +1,3 @@
-<%= dl_for @admin_blog, :host_name, [:user, ->(x){link_to x.email, x}] %>
+<%= dl_for @admin_blog, :name, :host_name, [:user, ->(x){link_to x.email, x}] %>
 <%= link_to_if can?(:edit, @admin_blog), t('crud.edit'), edit_admin_blog_path(@admin_blog) %> |
 <%= link_to t('action.back'), admin_blogs_path %>
