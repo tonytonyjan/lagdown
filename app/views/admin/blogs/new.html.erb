@@ -1,0 +1,7 @@
+<div class="page-header">
+  <h1><%= t('crud.new!', resource: Admin::Blog.model_name.human).titleize %></h1>
+</div>
+
+<%= render 'form' %>
+
+<%= link_to t('action.back'), admin_blogs_path %>

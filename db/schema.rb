@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140103082736) do
+ActiveRecord::Schema.define(version: 20140103115408) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,15 @@ ActiveRecord::Schema.define(version: 20140103082736) do
   add_index "administrators", ["email"], name: "index_administrators_on_email", unique: true, using: :btree
   add_index "administrators", ["reset_password_token"], name: "index_administrators_on_reset_password_token", unique: true, using: :btree
 
+  create_table "blogs", force: true do |t|
+    t.string   "host_name",  null: false
+    t.integer  "user_id",    null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "blogs", ["user_id"], name: "index_blogs_on_user_id", using: :btree
+
   create_table "o_auth_credentials", force: true do |t|
     t.integer  "user_id",    null: false
     t.string   "provider",   null: false
@@ -49,12 +58,12 @@ ActiveRecord::Schema.define(version: 20140103082736) do
   create_table "posts", force: true do |t|
     t.string   "title",      null: false
     t.text     "content",    null: false
-    t.integer  "user_id",    null: false
+    t.integer  "blog_id",    null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "posts", ["user_id"], name: "index_posts_on_user_id", using: :btree
+  add_index "posts", ["blog_id"], name: "index_posts_on_blog_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false

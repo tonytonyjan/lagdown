@@ -38,7 +38,7 @@ class User < ActiveRecord::Base
   select2_white_list :email
 
   # association macros
-  has_many :posts, dependent: :destroy
+  has_one :blog, dependent: :destroy
   has_many :o_auth_credentials, dependent: :destroy
 
   # validation macros

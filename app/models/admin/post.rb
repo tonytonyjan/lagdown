@@ -20,7 +20,7 @@ class Admin::Post < Post
   # Attributes related macros
 
   # association macros
-  belongs_to :user, class_name: Admin::User
+  belongs_to :blog, class_name: Admin::Blog
 
   # validation macros
 

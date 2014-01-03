@@ -1,0 +1,10 @@
+<div class="page-header">
+  <%= link_to_if can?(:create, Admin::Blog), t('crud.new!', resource: Admin::Blog.model_name.human), new_admin_blog_path, class: 'btn btn-primary btn-lg pull-right' %>
+  <h1><%= Admin::Blog.model_name.human %></h1>
+</div>
+
+<%= paginate @admin_blogs %>
+
+<%= table_for @admin_blogs, :host_name, [:user, ->(x){link_to x.email, x}], class: 'table table-striped' %>
+
+<%= paginate @admin_blogs %>

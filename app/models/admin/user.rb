@@ -31,7 +31,7 @@ class Admin::User < User
   # Attributes related macros
 
   # association macros
-  has_many :posts, class_name: Admin::Post
+  has_one :blog, dependent: :destroy, class_name: Admin::Blog
 
   # validation macros
 

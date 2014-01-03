@@ -20,10 +20,10 @@ class Post < ActiveRecord::Base
   # Attributes related macros
 
   # association macros
-  belongs_to :user
+  belongs_to :blog
 
   # validation macros
-  validates :title, :content, :user, presence: true
+  validates :title, :content, :blog, presence: true
 
   # callbacks
 
