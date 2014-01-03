@@ -11,7 +11,7 @@ set :deploy_to, '/home/lagdown/deploy/lagdown_cap'
 # set :log_level, :debug
 # set :pty, true
 
-set :linked_files, %w{config/database.yml}
+set :linked_files, %w{config/database.yml config/application.yml}
 set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
 
 set :default_env, { path: "/usr/local/ruby21/bin:$PATH" }
@@ -30,7 +30,9 @@ namespace :deploy do
     on roles(:web), in: :groups, limit: 3, wait: 10 do
       # Here we can do anything such as:
       within release_path do
-        execute :rake, 'flowdock:notify'
+        with rails_env: fetch(:rails_env) do
+          execute :rake, 'flowdock:notify'
+        end
       end
     end
   end

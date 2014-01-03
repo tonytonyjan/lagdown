@@ -5,9 +5,9 @@ set :stage, :production
 # Supports bulk-adding hosts to roles, the primary
 # server in each group is considered to be the first
 # unless any hosts have the primary property set.
-role :app, %w{lagdown@jy365.tomlan.tw}
-role :web, %w{lagdown@jy365.tomlan.tw}
-role :db,  %w{lagdown@jy365.tomlan.tw}
+role :app, %w{lagdown@lagdown.com}
+role :web, %w{lagdown@lagdown.com}
+role :db,  %w{lagdown@lagdown.com}
 
 # Extended Server Syntax
 # ======================
