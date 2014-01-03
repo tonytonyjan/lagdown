@@ -45,9 +45,13 @@ end
 # gem 'debugger', group: [:development, :test]
 
 gem 'devise'
-gem 'omniauth'
 gem 'cancan'
 gem 'settingslogic'
+
+# omniauth
+gem 'omniauth'
+gem 'omniauth-facebook'
+gem 'omniauth-google-oauth2'
 
 # paginate
 gem 'kaminari'
