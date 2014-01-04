@@ -14,9 +14,9 @@
   <nav>
     <ul>
       <% if user_signed_in? %>
-        <li><%= link_to 'Sign out', destroy_user_session_path, method: :delete %></li>
+        <li><%= link_to 'Sign out', destroy_user_session_url, method: :delete %></li>
       <% else %>
-        <li><%= link_to 'Sign in', new_user_session_path %></li>
+        <li><%= link_to 'Sign in', new_user_session_url %></li>
       <% end %>
     </ul>
   </nav>
