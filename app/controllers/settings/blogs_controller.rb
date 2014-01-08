@@ -13,10 +13,10 @@ class Settings::BlogsController < ApplicationController
   end
 
   def create
-    @blog = Blog.new(admin_blog_params)
+    @blog = current_user.blogs.new(blog_params)
 
     if @blog.save
-      redirect_to @blog, notice: t('crud.created_successfully!', name: Blog.model_name.human)
+      redirect_to [:settings, @blog], notice: t('crud.created_successfully!', name: Blog.model_name.human)
     else
       render action: 'new'
     end

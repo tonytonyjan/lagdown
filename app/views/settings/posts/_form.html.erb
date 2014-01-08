@@ -1,0 +1,6 @@
+<%= simple_form_for [:settings, @blog, @post] do |f| %>
+  <%= f.association :blog, input_html: {class: 'select2'} %>
+  <%= f.input :title %>
+  <%= f.input :content %>
+  <%= f.submit %>
+<% end %>

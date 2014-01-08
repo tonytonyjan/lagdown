@@ -4,7 +4,6 @@
   <div class="form-inputs">
     <%= f.input :name %>
     <%= f.input :host_name %>
-    <%= f.association :user, as: :string, input_html: {class: 'select2-single', data: {model: :User, column: :email, text: @blog.user.try(:email).to_s}} %>
   </div>
 
   <div class="form-actions">

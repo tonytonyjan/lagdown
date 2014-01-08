@@ -6,13 +6,15 @@ Lagdown::Application.routes.draw do
     get 'select2/tags', format: :json
     get 'select2/results', format: :json
     namespace :settings do
-      resources :blogs
+      resources :blogs do
+        resources :posts, only: %i[new create edit update destroy]
+      end
     end
   end
 
   constraints(Subdomain) do
     root 'posts#index', as: :blog_root
-    resources :posts, except: %i[index]
+    resources :posts, except: %i[index show]
   end 
 
   namespace :admin do
