@@ -1,0 +1,5 @@
+<h1><%= t('crud.new!', resource: Admin::Blog.model_name.human).titleize %></h1>
+
+<%= render 'form' %>
+
+<%= link_to t('action.back'), settings_blogs_path %>
