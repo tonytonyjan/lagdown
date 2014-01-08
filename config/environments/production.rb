@@ -77,7 +77,4 @@ Lagdown::Application.configure do
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
-
-  config.action_mailer.default_url_options = {host: 'lagdown.com'}
-  config.action_mailer.smtp_settings = Settings.smtp_settings.to_options
 end
