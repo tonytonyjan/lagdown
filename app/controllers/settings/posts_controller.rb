@@ -16,7 +16,7 @@ class Settings::PostsController < ApplicationController
   def create
     @post = @blog.posts.new(post_params)
     if @post.save
-      redirect_to post_path(@post), notice: t('crud.created_successfully!', name: Post.model_name.human)
+      redirect_to post_url(@post, host: Settings.host, subdomain: @blog.host_name), notice: t('crud.created_successfully!', name: Post.model_name.human)
     else
       render :new
     end
