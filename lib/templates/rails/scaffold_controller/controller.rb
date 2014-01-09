@@ -6,7 +6,7 @@ require_dependency "<%= namespaced_file_path %>/application_controller"
 class <%= controller_class_name %>Controller < ApplicationController
   include AdminConcern
   before_action :set_<%= singular_table_name %>, only: [:show, :edit, :update, :destroy]
-  authorize_resource instance_name: :<%= singular_table_name %>
+  authorize_resource class: <%= class_name %>
 
   # GET <%= route_url %>
   # GET <%= route_url %>.json

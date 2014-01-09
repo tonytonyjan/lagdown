@@ -1,4 +1,4 @@
-<%%= simple_form_for(@<%= singular_table_name %>, bootstrap_form_options(form_class: 'form-horizontal')) do |f| %>
+<%%= simple_form_for(@<%= singular_table_name %>, **bootstrap_form_options(form_class: 'form-horizontal')) do |f| %>
   <%%= f.error_notification class: 'alert alert-danger' %>
 
   <div class="form-inputs">
