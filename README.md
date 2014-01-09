@@ -4,10 +4,9 @@ Coding Rules
 Create a new model
 ------------------
 
-    rails g model car name:string description:text
+    rails g model Post title:string content:text
     rake db:migrate
-    rails g scaffold admin/car name:string description:text --migration=false --assets=false --helper=false --jbuilder=false
-    rm app/models/admin.rb
+    rails g scaffold Admin::Post title:string content:text --migration=false --parent=Car
 
 config/routes.rb
 
