@@ -14,7 +14,7 @@ Lagdown::Application.routes.draw do
 
   constraints(Subdomain) do
     root 'posts#index', as: :blog_root
-    resources :posts, except: %i[index show]
+    resources :posts, only: %i[index show]
   end 
 
   namespace :admin do
