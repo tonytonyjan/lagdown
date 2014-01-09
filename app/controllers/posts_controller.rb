@@ -16,6 +16,6 @@ class PostsController < ApplicationController
   end
 
   def set_post
-    @post = Post.find(params[:id])
+    @post = @blog.posts.find(params[:id])
   end
 end
