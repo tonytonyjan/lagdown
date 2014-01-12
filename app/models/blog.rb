@@ -5,6 +5,7 @@ class Blog < ActiveRecord::Base
   include Select2Concern
 
   # Constants
+  SUBDOMAIN_BLACK_LIST = %w[www admin api xdite]
   
   # Attributes related macros
   select2_white_list :subdomain
@@ -15,7 +16,7 @@ class Blog < ActiveRecord::Base
 
   # validation macros
   validates :user, :name, :subdomain, presence: true
-  validates :subdomain, uniqueness: true
+  validates :subdomain, uniqueness: true, exclusion: { in: SUBDOMAIN_BLACK_LIST }
 
   # callbacks
 
