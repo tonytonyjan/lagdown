@@ -8,6 +8,7 @@ class Settings::BlogsController < ApplicationController
   end
 
   def show
+    @posts = @blog.posts.page(params[:page])
   end
 
   def new

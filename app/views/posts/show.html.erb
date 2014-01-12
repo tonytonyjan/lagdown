@@ -1,2 +1,3 @@
 <%= debug @post %>
-<%= link_to 'back to blog', root_path %>
+<%= link_to t('.back'), root_path %>
+<%= link_to t('.edit'), edit_settings_blog_post_url(@blog, @post) %>

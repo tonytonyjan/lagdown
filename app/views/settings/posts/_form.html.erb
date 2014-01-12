@@ -1,5 +1,4 @@
-<%= simple_form_for [:settings, @blog, @post] do |f| %>
-  <%= f.association :blog, input_html: {class: 'select2'} %>
+<%= simple_form_for [@blog, @post], **bootstrap_form_options(form_class: 'form-horizontal') do |f| %>
   <%= f.input :title %>
   <%= f.input :content %>
   <%= f.submit %>

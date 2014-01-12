@@ -29,6 +29,8 @@ class Settings::PostsController < ApplicationController
   end
 
   def destroy
+    @post.destroy
+    redirect_to @blog
   end
 
   private
@@ -38,7 +40,7 @@ class Settings::PostsController < ApplicationController
   end
 
   def set_blog
-    @blog = Blog.find(params[:blog_id])
+    @blog = Settings::Blog.find(params[:blog_id])
   end
 
   def set_post
