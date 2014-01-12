@@ -12,7 +12,7 @@ class PostsController < ApplicationController
   private
 
   def set_blog
-    @blog = Blog.find_by_host_name request.subdomain
+    @blog = Blog.find_by_subdomain request.subdomain
   end
 
   def set_post

@@ -5,6 +5,6 @@
 
 <%= paginate @admin_posts %>
 
-<%= table_for @admin_posts, :title, :content, [:blog, ->(x){link_to x.host_name, x}], class: 'table table-striped' %>
+<%= table_for @admin_posts, :title, :content, [:blog, ->(x){link_to x.subdomain, x}], class: 'table table-striped' %>
 
 <%= paginate @admin_posts %>

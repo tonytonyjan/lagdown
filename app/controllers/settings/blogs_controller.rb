@@ -31,6 +31,6 @@ class Settings::BlogsController < ApplicationController
   end
 
   def blog_params
-    params.require(:blog).permit(:name, :host_name, :user_id)
+    params.require(:blog).permit(:name, :subdomain, :user_id)
   end
 end

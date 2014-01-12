@@ -7,14 +7,14 @@ class Blog < ActiveRecord::Base
   # Constants
   
   # Attributes related macros
-  select2_white_list :host_name
+  select2_white_list :subdomain
 
   # association macros
   belongs_to :user
   has_many :posts, dependent: :destroy
 
   # validation macros
-  validates :user, :host_name, presence: true
+  validates :user, :subdomain, presence: true
 
   # callbacks
 
