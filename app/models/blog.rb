@@ -14,7 +14,8 @@ class Blog < ActiveRecord::Base
   has_many :posts, dependent: :destroy
 
   # validation macros
-  validates :user, :subdomain, presence: true
+  validates :user, :name, :subdomain, presence: true
+  validates :subdomain, uniqueness: true
 
   # callbacks
 

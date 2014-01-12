@@ -3,24 +3,17 @@
 <head>
   <title>Lagdown</title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+  <![endif]-->
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <div>
-    <p><%= flash[:notice] %></p>
-    <p><%= flash[:alert] %></p>
+  <%= render 'share/navbar' %>
+  <div class="container">
+    <%= yield %>
   </div>
-  <nav>
-    <ul>
-      <% if user_signed_in? %>
-        <li><%= link_to 'Sign out', destroy_user_session_url, method: :delete %></li>
-        <li><%= link_to 'Blogs', settings_blogs_url %></li>
-      <% else %>
-        <li><%= link_to 'Sign in', new_user_session_url %></li>
-      <% end %>
-    </ul>
-  </nav>
-  <%= yield %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
 </body>
 </html>

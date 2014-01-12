@@ -1,2 +1,29 @@
-<h1>Settings::Blogs#index</h1>
-<p>Find me in app/views/settings/blogs/index.html.erb</p>
+<div class="page-header">
+  <%= link_to t('crud.new!', resource: Settings::Blog.model_name.human), new_settings_blog_path, class: 'btn btn-primary btn-lg pull-right' %>
+  <h1><%= Settings::Blog.model_name.human %></h1>
+</div>
+
+<%= paginate @blogs %>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= Settings::Blog.human_attribute_name(:name) %></th>
+      <th><%= Settings::Blog.human_attribute_name(:subdomain) %></th>
+      <th><%= t('.blog_url') %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @blogs.each do |blog| %>
+      <tr>
+        <td><%= link_to blog.name, blog %></td>
+        <td><%= blog.subdomain %></td>
+        <td><%= link_to root_url(host: Settings.host, subdomain: blog.subdomain), root_url(host: Settings.host, subdomain: blog.subdomain) %></td>
+        <td><%= link_to t('crud.edit'), edit_settings_blog_path(blog) %></td>
+        <td><%= link_to t('crud.delete'), settings_blog_path(blog), method: :delete, data: {confirm: t('message.are_you_sure')} %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= paginate @blogs %>
