@@ -69,6 +69,9 @@ gem 'nested_form'
 
 gem 'flowdock'
 
+# markdown
+gem 'rdiscount'
+
 group :development, :test do
   gem 'capistrano'
   gem 'capistrano-rvm'
