@@ -9,6 +9,10 @@ class PostsController < ApplicationController
   def show
   end
 
+  def preview
+    render text: RDiscount.new(params[:text].to_s).to_html
+  end
+
   private
 
   def set_blog
