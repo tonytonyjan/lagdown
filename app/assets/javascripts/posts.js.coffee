@@ -1,5 +1,5 @@
-if $('body[data-controller="settings/posts"]')
-  $ () ->
+$(document).on 'ready page:change', () ->
+  if $('body[data-controller="settings/posts"]') && $('form').length > 0
     editor = ace.edit('editor')
     editor.setTheme("ace/theme/textmate")
     editor.getSession().setMode("ace/mode/markdown")
