@@ -1,13 +1,13 @@
 $(document).on 'ready page:change', () ->
-  if $('body[data-controller="settings/posts"]').length > 0 && $('form').length > 0
+  if $('body[data-controller="home"]').length > 0
     editor = ace.edit('editor')
-    editor.setTheme("ace/theme/textmate")
+    editor.setTheme('ace/theme/twilight')
     editor.setFontSize(16)
-    editor.getSession().setMode("ace/mode/markdown")
+    editor.getSession().setMode('ace/mode/markdown')
     editor.getSession().setUseWrapMode(true)
     editor.getSession().setUseSoftTabs(true)
     editor.getSession().setTabSize(2)
-    editor.setValue($('#post_content').val())
+    editor.setValue($('#welcome_text').text())
 
     $('#preview_btn').click () ->
       $.ajax
@@ -18,5 +18,4 @@ $(document).on 'ready page:change', () ->
       .done (data) ->
         $('#preview_area').html data
         MathJax.Hub.Queue(["Typeset",MathJax.Hub]) if !!MathJax
-    $('form').submit () ->
-      $('#post_content').val(editor.getValue())
+    .trigger('click')

@@ -5,3 +5,4 @@
 //= require select2
 //= require select2_helper
 //= require posts
+//= require home

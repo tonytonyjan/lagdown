@@ -1,3 +1,8 @@
-<%= sanitize RDiscount.new(@post.content).to_html %>
+<%= sanitize RDiscount.new(@post.content, :no_superscript).to_html %>
 <%= link_to t('.back'), root_path %>
 <%= link_to t('.edit'), edit_settings_blog_post_url(@blog, @post) %>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+</script>
+<%= javascript_include_tag 'mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML' %>

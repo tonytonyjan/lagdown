@@ -11,7 +11,7 @@ class PostsController < ApplicationController
   end
 
   def preview
-    render text: RDiscount.new(params[:text].to_s).to_html
+    render text: RDiscount.new(params[:text].to_s, :no_superscript).to_html
   end
 
   private
