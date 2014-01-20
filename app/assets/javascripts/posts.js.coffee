@@ -1,11 +1,18 @@
-$ () -> 
-  $('.preview-btn').click () ->
-    text_source = $(this.getAttribute('data-source'))
-    display_target = $(this.getAttribute('data-target'))
-    $.ajax
-      url: '/preview'
-      type: 'POST'
-      data:
-        text: text_source.val()
-    .done (data) ->
-      display_target.html data
+if $('body[data-controller="settings/posts"]')
+  $ () ->
+    editor = ace.edit('editor')
+    editor.setTheme("ace/theme/textmate")
+    editor.getSession().setMode("ace/mode/markdown")
+    editor.setFontSize(16)
+    editor.setValue($('#post_content').val())
+
+    $('#preview_btn').click () ->
+      $.ajax
+        url: '/preview'
+        type: 'POST'
+        data:
+          text: editor.getValue()
+      .done (data) ->
+        $('#preview_area').html data
+    $('form').submit () ->
+      $('#post_content').val(editor.getValue())

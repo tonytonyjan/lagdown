@@ -26,6 +26,11 @@ class Settings::PostsController < ApplicationController
   end
 
   def update
+    if @post.update post_params
+      redirect_to post_url(@post, host: Settings.host, subdomain: @blog.subdomain), notice: t('crud.updated_successfully!', name: Post.model_name.human)
+    else
+      render :edit
+    end
   end
 
   def destroy

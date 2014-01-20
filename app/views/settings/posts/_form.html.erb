@@ -2,12 +2,13 @@
   <div class="col-sm-6">
     <%= simple_form_for [@blog, @post], **bootstrap_form_options(form_class: 'form-horizontal') do |f| %>
       <%= f.input :title %>
-      <%= f.input :content %>
+      <div id="editor" data-target="#post_content"></div>
+      <%= f.input :content, as: :hidden %>
       <%= f.submit %>
     <% end %>
   </div>
   <div class="col-sm-6">
-    <%= button_tag t('.preview'), type: :button, class: :'preview-btn', data: {source: '#post_content', target: '#preview'} %>
-    <div id="preview"></div>
+    <%= button_tag t('.preview'), type: :button, id: :preview_btn %>
+    <div id="preview_area"></div>
   </div>
 </div>
