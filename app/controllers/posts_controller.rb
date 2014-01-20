@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   before_action :set_blog
   before_action :set_post, only: %i[show]
+  layout 'blog'
 
   def index
     @posts = @blog.posts.page(params[:page])
