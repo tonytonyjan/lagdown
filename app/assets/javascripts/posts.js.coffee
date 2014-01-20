@@ -17,6 +17,7 @@ $(document).on 'ready page:change', () ->
           text: editor.getValue()
       .done (data) ->
         $('#preview_area').html data
+        hljs.highlightBlock(e) for e in $('#preview_area pre code')
         MathJax.Hub.Queue(["Typeset",MathJax.Hub]) if !!MathJax
     $('form').submit () ->
       $('#post_content').val(editor.getValue())

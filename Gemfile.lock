@@ -133,6 +133,7 @@ GEM
     rails-assets-bootstrap (3.0.3)
       rails-assets-jquery (>= 1.9.0)
     rails-assets-font-awesome (4.0.3)
+    rails-assets-highlightjs (7.5.0)
     rails-assets-jquery (2.0.3)
     rails-assets-jquery-ui (1.10.3)
       rails-assets-jquery (>= 1.6)
@@ -144,7 +145,7 @@ GEM
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
     rake (10.1.1)
-    rdiscount (2.1.6)
+    rdiscount (2.1.7)
     rdoc (3.12.2)
       json (~> 1.4)
     ref (1.0.5)
@@ -219,6 +220,7 @@ DEPENDENCIES
   rails (= 4.0.2)
   rails-assets-bootstrap
   rails-assets-font-awesome
+  rails-assets-highlightjs
   rails-assets-jquery-ui
   rails-assets-select2
   rdiscount

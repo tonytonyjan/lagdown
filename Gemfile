@@ -62,6 +62,7 @@ gem 'rails-assets-bootstrap'
 gem 'rails-assets-select2'
 gem 'rails-assets-font-awesome'
 gem 'rails-assets-jquery-ui'
+gem 'rails-assets-highlightjs'
 
 # form
 gem 'simple_form'

@@ -6,6 +6,18 @@ My favorite things:
 * Piano
 * Ponytail Girl
 
+Code
+==========
+```
+class User
+  attr_accessor :name, :age, :length
+  def initialize **params
+    params.each{ |key, value| send("#{key}=", value) }
+  end
+end
+User.new name: "tonytonyjan", age: 24, length: 30
+```
+
 Math
 ==========
 When $a \ne 0$, there are two solutions to \(ax^2 + bx + c = 0\) and they are
