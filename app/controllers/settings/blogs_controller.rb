@@ -4,7 +4,7 @@ class Settings::BlogsController < ApplicationController
   authorize_resource
 
   def index
-    @blogs = current_user.blogs.page(params[:page])
+    @blogs = Settings::Blog.where(user_id: current_user.id).page(params[:page])
   end
 
   def show
@@ -16,7 +16,8 @@ class Settings::BlogsController < ApplicationController
   end
 
   def create
-    @blog = current_user.blogs.new(blog_params)
+    @blog = Settings::Blog.new(blog_params)
+    @blog.user = current_user
 
     if @blog.save
       redirect_to @blog, notice: t('crud.created_successfully!', name: Settings::Blog.model_name.human)
@@ -42,6 +43,6 @@ class Settings::BlogsController < ApplicationController
   end
 
   def blog_params
-    params.require(:settings_blog).permit(:name, :subdomain, :user_id)
+    params.require(:settings_blog).permit(:name, :subdomain)
   end
 end
