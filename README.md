@@ -1,10 +1,7 @@
-Coding Rules
+About Lagdown
 =============
+Lagdown is a blogging system supports markdown, Tex mathematical syntax and code highlight. 
 
-Create a new model
-------------------
+We aim to build a blogging service that belongs to we engineers and mathematician. It's a leisure project after my work, so there is no explicit schedule or plan. Join us if your are interested.
 
-rails g model Post title:string
-rake db:migrate
-rails g scaffold Admin::Post title:string --migration=false --parent=Post
-rm app/models/admin.rb
+You can check our progress in [milestones](https://github.com/tonytonyjan/lagdown/issues/milestones), or if you have any cool idea, feel to make issues letting us know, thanks a million. =)
