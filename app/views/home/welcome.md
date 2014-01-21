@@ -8,7 +8,7 @@ My favorite things:
 
 Code
 ==========
-```
+```ruby
 class User
   attr_accessor :name, :age, :length
   def initialize **params
