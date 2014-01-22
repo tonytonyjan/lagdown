@@ -37,6 +37,11 @@ class Settings::BlogsController < ApplicationController
     end
   end
 
+  def destroy
+    @blog.destroy
+    redirect_to Settings::Blog
+  end
+
   private
   def set_blog
     @blog = Settings::Blog.find(params[:id])
