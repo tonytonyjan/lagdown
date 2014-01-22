@@ -19,6 +19,9 @@
 #  unconfirmed_email      :string(255)
 #  created_at             :datetime
 #  updated_at             :datetime
+#  nickname               :string(255)
+#  homepage               :string(255)
+#  about                  :text
 #
 
 class User < ActiveRecord::Base
