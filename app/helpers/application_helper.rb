@@ -1,6 +1,7 @@
 module ApplicationHelper
-  def nav_li name, link
-    content_tag :li, link_to(name, link), class: ('active' if request.fullpath == link)
+  def nav_li name, link, match: link
+    active = 'active' if request.fullpath[match]
+    content_tag :li, link_to(name, link), class: active
   end
 
   def nav_li_for model, match: model.table_name
