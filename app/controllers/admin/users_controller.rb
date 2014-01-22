@@ -43,6 +43,7 @@ class Admin::UsersController < ApplicationController
   # PATCH/PUT /admin/users/1
   # PATCH/PUT /admin/users/1.json
   def update
+    params[:admin_user].delete(:password) if admin_user_params[:password].blank?
     respond_to do |format|
       if @admin_user.update(admin_user_params)
         format.html { redirect_to @admin_user, notice: t('crud.updated_successfully!', name: Admin::User.model_name.human) }

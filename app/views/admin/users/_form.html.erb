@@ -3,7 +3,7 @@
 
   <div class="form-inputs">
     <%= f.input :email %>
-    <%= f.input :password %>
+    <%= f.input :password, hint: t('.leave_blank') %>
     <%= f.input :nickname %>
     <%= f.input :about %>
     <%= f.input :homepage, as: :url %>
