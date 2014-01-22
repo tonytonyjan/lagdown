@@ -1,5 +1,5 @@
 class Settings::BlogsController < ApplicationController
-  before_action :authenticate_user!
+  include SettingsConcern
   before_action :set_blog, only: [:show, :edit, :update, :destroy]
   authorize_resource
 

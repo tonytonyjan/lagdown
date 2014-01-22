@@ -15,6 +15,7 @@
   <%= render 'share/navbar' %>
   <div class="container">
     <%= notice_message %>
+    <%= yield :prepend_container %>
     <%= yield %>
   </div>
   <hr>
