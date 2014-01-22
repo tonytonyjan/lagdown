@@ -29,6 +29,7 @@ class Blog < ActiveRecord::Base
   # validation macros
   validates :user, :name, :subdomain, presence: true
   validates :subdomain, uniqueness: true, exclusion: { in: SUBDOMAIN_BLACK_LIST }
+  validate :limit_blog_number, on: :create
 
   # callbacks
 
@@ -36,4 +37,7 @@ class Blog < ActiveRecord::Base
 
   protected
   # callback methods
+  def limit_blog_number
+    errors.add(:base, :too_many_blogs) if user.blogs.size > 3
+  end
 end

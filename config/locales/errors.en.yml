@@ -1,0 +1,5 @@
+en:
+  errors:
+    attributes:
+      base:
+        too_many_blogs: Too many blogs
