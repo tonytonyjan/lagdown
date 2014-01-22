@@ -1,0 +1,9 @@
+en:
+  admin:
+    users:
+      form:
+        leave_blank: leave blank if you don't want to change it
+  settings:
+    users:
+      edit:
+        update: Update

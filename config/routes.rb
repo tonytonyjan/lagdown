@@ -1,7 +1,7 @@
 Lagdown::Application.routes.draw do
   constraints subdomain: false do
     root 'home#index'
-    devise_for :users, controllers: {omniauth_callbacks: 'users/omniauth_callbacks'}
+    devise_for :users, controllers: {omniauth_callbacks: 'users/omniauth_callbacks', registrations: 'users/registrations'}
     get 'select2/tags', format: :json
     get 'select2/results', format: :json
     post 'preview' => 'posts#preview'
@@ -9,6 +9,7 @@ Lagdown::Application.routes.draw do
       resources :blogs do
         resources :posts, only: %i[new create edit update destroy]
       end
+      resource :user, only: %i[edit update]
     end
   end
 
