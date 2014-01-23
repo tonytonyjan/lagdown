@@ -78,4 +78,33 @@ group :development, :test do
   gem 'capistrano-rvm'
   gem 'capistrano-bundler'
   gem 'capistrano-rails'
+
+  gem 'awesome_print'
+  gem 'pry-rails'
+  gem 'pry-remote'
+  gem 'pry-stack_explorer'
+  gem 'pry-debugger'
+
+  gem 'factory_girl_rails', :require => false
+  gem "rspec-rails"
+end
+
+group :development do
+  # can be removed after Rails 4.1
+  # https://github.com/rails/rails/commit/6f72a6b53afda51a73af69194ed0060ea5048fa9
+  gem "spring"
+  gem "spring-commands-rspec"
+end
+
+group :test do
+  gem 'capybara'
+  gem 'simplecov', :require => false
+  gem 'ruby-progressbar', github: 'jdelStrother/ruby-progressbar', branch: 'stopstart'
+  gem 'fuubar'
+  gem "rspec-given"
+  gem 'database_cleaner'
+  gem 'rspec-fire'
+  gem 'timecop'
+  gem 'simplecov-rcov'
+  gem 'shoulda-matchers'
 end
