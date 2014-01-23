@@ -4,9 +4,12 @@ defaults: &defaults
 
 development:
   <<: *defaults
+  oauth_providers: []
+  oauth: []
   recipient: foo@gmail.com
   http_auth_name: admin
   http_auth_password: "12345"
+  host: 'lagdown.dev'
   smtp_settings:
     address: smtp.gmail.com
     port: 587
