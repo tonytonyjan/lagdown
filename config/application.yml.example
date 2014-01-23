@@ -4,8 +4,19 @@ defaults: &defaults
 
 development:
   <<: *defaults
-  oauth_providers: []
-  oauth: []
+  oauth_providers: [facebook, google, github]
+  oauth:
+    github:
+      - "CLIENT"
+      - "SECRET"
+    facebook:
+      - "CLIENT"
+      - "SECRET"
+    google_oauth2:
+      - "CLIENT"
+      - "SECRET"
+      -
+        :name: google
   recipient: foo@gmail.com
   http_auth_name: admin
   http_auth_password: "12345"
