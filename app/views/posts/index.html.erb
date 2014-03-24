@@ -5,7 +5,9 @@
   <div class="page-header">
     <h2><%= post.title %></h2>
   </div>
-  <%= sanitize RDiscount.new(post.content, :no_superscript).to_html %>
+  <div class="highlight">
+    <%= sanitize RDiscount.new(post.content, :no_superscript).to_html %>
+  </div>
 <% end %>
 
 <%= mathjax_script_tag %>

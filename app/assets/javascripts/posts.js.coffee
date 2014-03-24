@@ -1,9 +1,4 @@
 $(document).on 'page:change', () ->
-  # body data-action="show" data-controller="posts"
-  if $('body[data-controller="posts"][data-action="show"]').length > 0
-    hljs.highlightBlock(e) for e in $('pre code')
-  if $('body[data-controller="posts"][data-action="index"]').length > 0
-    hljs.highlightBlock(e) for e in $('pre code')
   if $('body[data-controller="settings/posts"]').length > 0 && $('form').length > 0
     editor = ace.edit('editor')
     editor.setTheme("ace/theme/twilight")
