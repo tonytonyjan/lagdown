@@ -3,7 +3,7 @@
 </div>
 <% @posts.each do |post| %>
   <div class="page-header">
-    <h2><%= post.title %></h2>
+    <h2><%= link_to post.title, post_path(post) %></h2>
   </div>
   <div class="highlight">
     <%= sanitize RDiscount.new(post.content, :no_superscript).to_html %>
