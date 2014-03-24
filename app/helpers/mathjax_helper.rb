@@ -1,6 +1,6 @@
 module MathjaxHelper
-  def mathjax_script_tag *elements
-    js_array = elements.empty? ? '[]' : "['#{elements.join("','")}']"
+  def mathjax_script_tag *element_ids
+    js_array = element_ids.empty? ? '[]' : "['#{element_ids.join("','")}']"
     result = content_tag :script, type: 'text/x-mathjax-config' do
       "MathJax.Hub.Config({elements: #{js_array},tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});".html_safe
     end
