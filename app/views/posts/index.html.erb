@@ -9,5 +9,6 @@
     <%= sanitize RDiscount.new(post.content, :no_superscript).to_html %>
   </div>
 <% end %>
+<%= paginate @posts %>
 
 <%= mathjax_script_tag %>
