@@ -1,9 +1,9 @@
 $(document).on 'page:change', () ->
   if $('body[data-controller="settings/posts"]').length > 0 && $('form').length > 0
     editor = ace.edit('editor')
-    editor.setTheme("ace/theme/twilight")
+    editor.setTheme('ace/theme/twilight')
     editor.setFontSize(16)
-    editor.getSession().setMode("ace/mode/markdown")
+    editor.getSession().setMode('ace/mode/markdown')
     editor.getSession().setUseWrapMode(true)
     editor.getSession().setUseSoftTabs(true)
     editor.getSession().setTabSize(2)
