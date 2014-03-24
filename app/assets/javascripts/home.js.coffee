@@ -4,6 +4,7 @@ $(document).on 'page:change', () ->
     editor.setTheme('ace/theme/twilight')
     editor.setFontSize(16)
     editor.getSession().setMode('ace/mode/markdown')
+    editor.getSession().setUseWrapMode(true)
     editor.getSession().setUseSoftTabs(true)
     editor.getSession().setTabSize(2)
     editor.setValue($('#welcome_text').text(), 1)
