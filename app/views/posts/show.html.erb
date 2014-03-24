@@ -2,7 +2,9 @@
   <h1><%= @post.title %></h1>
 </div>
 
-<%= sanitize RDiscount.new(@post.content, :no_superscript).to_html %>
+<div class="highlight">
+  <%= sanitize RDiscount.new(@post.content, :no_superscript).to_html %>
+</div>
 <%= link_to t('.back'), root_path %>
 <%= link_to t('.edit'), edit_settings_blog_post_url(@blog, @post) %>
 
