@@ -12,15 +12,5 @@
     <div id="preview_area"></div>
   </div>
 </div>
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config(
-    {
-      elements: ['preview_area'],
-      tex2jax:{
-        inlineMath: [['$','$'], ['\\(','\\)']]
-      }
-    }
-  );
-</script>
-<%= javascript_include_tag 'mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML' %>
+<%= mathjax_script_tag 'preview_area' %>
 <a href="https://github.com/tonytonyjan/lagdown"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_left_red_aa0000.png" alt="Fork me on GitHub"></a>
