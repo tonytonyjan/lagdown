@@ -3,4 +3,8 @@ body[data-controller="home"]{
     width: 100%;
     height: 600px;
   }
+  #preview_area{
+    height: 600px;
+    overflow:scroll;
+  }
 }
