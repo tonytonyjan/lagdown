@@ -6,7 +6,7 @@ $(document).on 'page:change', () ->
     editor.getSession().setMode('ace/mode/markdown')
     editor.getSession().setUseSoftTabs(true)
     editor.getSession().setTabSize(2)
-    editor.setValue($('#post_content').val())
+    editor.setValue($('#post_content').val(), 1)
 
     $('#preview_btn').click () ->
       $.ajax
