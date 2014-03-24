@@ -1,4 +1,4 @@
-$(document).on 'ready page:change', () ->
+$(document).on 'page:change', () ->
   $('.select2').select2
     width: '100%'
   $('.select2-single').select2

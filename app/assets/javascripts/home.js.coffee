@@ -1,4 +1,4 @@
-$(document).on 'ready page:change', () ->
+$(document).on 'page:change', () ->
   if $('body[data-controller="home"]').length > 0
     editor = ace.edit('editor')
     editor.setTheme('ace/theme/twilight')

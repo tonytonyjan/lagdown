@@ -1,7 +1,10 @@
-$(document).on 'ready page:change', () ->
+$(document).on 'page:change', () ->
+  # body data-action="show" data-controller="posts"
+  if $('body[data-controller="posts"][data-action="show"]').length > 0
+    hljs.highlightBlock(e) for e in $('pre code')
   if $('body[data-controller="settings/posts"]').length > 0 && $('form').length > 0
     editor = ace.edit('editor')
-    editor.setTheme("ace/theme/textmate")
+    editor.setTheme("ace/theme/twilight")
     editor.setFontSize(16)
     editor.getSession().setMode("ace/mode/markdown")
     editor.getSession().setUseWrapMode(true)
@@ -19,5 +22,6 @@ $(document).on 'ready page:change', () ->
         $('#preview_area').html data
         hljs.highlightBlock(e) for e in $('#preview_area pre code')
         MathJax.Hub.Queue(["Typeset",MathJax.Hub]) if !!MathJax
+    .trigger('click')
     $('form').submit () ->
       $('#post_content').val(editor.getValue())
