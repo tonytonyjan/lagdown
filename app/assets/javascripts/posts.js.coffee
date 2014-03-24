@@ -7,6 +7,7 @@ $(document).on 'page:change', () ->
     editor.getSession().setUseSoftTabs(true)
     editor.getSession().setTabSize(2)
     editor.setValue($('#post_content').val(), 1)
+    editor.focus()
 
     $('#preview_btn').click () ->
       $.ajax
