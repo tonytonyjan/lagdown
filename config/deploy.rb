@@ -17,6 +17,7 @@ set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public
 set :default_env, { path: "/usr/local/ruby21/bin:$PATH" }
 # set :keep_releases, 5
 
+after :'deploy:publishing', :'deploy:restart'
 namespace :deploy do
 
   desc 'Restart application'
