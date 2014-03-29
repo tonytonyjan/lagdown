@@ -17,7 +17,7 @@ class PostsController < ApplicationController
       generator: :lagdown
     }
     @og_hash = {
-      title: @post.title,
+      title: @title,
       type:  :website,
       url: post_url(@post),
       description: description
