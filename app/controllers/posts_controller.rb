@@ -9,11 +9,16 @@ class PostsController < ApplicationController
   end
 
   def show
+    @meta_hash = {
+      author: @blog.user.try(:nickname),
+      description: @post.content.truncate(200),
+      generator: :lagdown
+    }
     @og_hash = {
       title: @post.title,
       type:  :website,
       url: post_url(@post),
-      description: @post.content
+      description: @post.content.truncate(200)
     }
   end
 
