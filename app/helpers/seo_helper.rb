@@ -17,11 +17,11 @@ module SeoHelper
 
   # usage in controller:
   # @og_hash = {
-  #   title: @event.name,
-  #   type:  :website,
-  #   url: event_url(@event),
-  #   image: @event.image,
-  #   description: @event.brief
+  #   title: "foo",
+  #   type: "foo",
+  #   url: "foo",
+  #   image: "foo",
+  #   description: "foo"
   # }
   def og_meta_tags **og_hash
     og_hash = og_hash.presence || @og_hash || return
