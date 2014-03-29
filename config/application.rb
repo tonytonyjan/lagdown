@@ -25,5 +25,8 @@ module Lagdown
     config.generators.assets = false
     config.generators.helper = false
     config.generators.jbuilder = false
+
+    # auto-loading
+    config.autoload_paths += Dir[Rails.root.join('lib')]
   end
 end

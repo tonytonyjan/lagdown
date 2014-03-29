@@ -3,7 +3,7 @@
 </div>
 
 <div class="highlight">
-  <%= sanitize RDiscount.new(@post.content, :no_superscript).to_html %>
+  <%= sanitize LagdownRenderer.render(@post.content) %>
 </div>
 <%= link_to t('.back'), root_path %>
 <%= link_to t('.edit'), edit_settings_blog_post_url(@blog, @post) if can? :edit, @post %>

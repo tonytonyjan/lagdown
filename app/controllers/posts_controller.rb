@@ -23,7 +23,7 @@ class PostsController < ApplicationController
   end
 
   def preview
-    render text: RDiscount.new(params[:text].to_s, :no_superscript).to_html
+    render text: LagdownRenderer.render(params[:text].to_s)
   end
 
   private
