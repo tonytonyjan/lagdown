@@ -1,6 +1,6 @@
 module ApplicationHelper
   def title_tag
-    content_tag(:title, @title || t('site.name'))
+    content_tag(:title, @title || t('site_name'))
   end
 
   def nav_li name, link, match: link
