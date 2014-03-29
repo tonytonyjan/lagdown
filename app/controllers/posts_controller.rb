@@ -9,6 +9,12 @@ class PostsController < ApplicationController
   end
 
   def show
+    @og_hash = {
+      title: @post.title,
+      type:  :website,
+      url: post_url(@post),
+      description: @post.content
+    }
   end
 
   def preview
