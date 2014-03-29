@@ -10,6 +10,7 @@ class PostsController < ApplicationController
 
   def show
     description = LagdownRenderer.render(@post.content)[/<p>([^<].*)<\/p>/, 1]
+    @title =  "#{@post.title} - #{@blog.name}"
     @meta_hash = {
       author: @blog.user.try(:nickname),
       description: description,

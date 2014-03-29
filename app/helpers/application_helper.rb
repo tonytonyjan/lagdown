@@ -1,4 +1,8 @@
 module ApplicationHelper
+  def title_tag
+    content_tag(:title, @title || t('site.name'))
+  end
+
   def nav_li name, link, match: link
     active = 'active' if request.fullpath[match]
     content_tag :li, link_to(name, link), class: active
