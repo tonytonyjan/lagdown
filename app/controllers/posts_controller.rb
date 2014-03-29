@@ -9,16 +9,17 @@ class PostsController < ApplicationController
   end
 
   def show
+    description = LagdownRenderer.render(@post.content)[/<p>([^<].*)<\/p>/, 1]
     @meta_hash = {
       author: @blog.user.try(:nickname),
-      description: @post.content.truncate(200),
+      description: description,
       generator: :lagdown
     }
     @og_hash = {
       title: @post.title,
       type:  :website,
       url: post_url(@post),
-      description: @post.content.truncate(200)
+      description: description
     }
   end
 
