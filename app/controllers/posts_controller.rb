@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   before_action :set_blog, only: %i[index show]
   before_action :set_post, only: %i[show]
-  authorize_resource
+  authorize_resource except: :preview
   layout 'blog'
 
   def index
