@@ -18,7 +18,7 @@ class Settings::PostsController < ApplicationController
   def create
     @post = @blog.posts.new(post_params)
     if @post.save
-      redirect_to post_url(@post, host: Settings.host, subdomain: @blog.subdomain), notice: t('crud.created_successfully!', name: Post.model_name.human)
+      redirect_to post_url(@post, subdomain: @blog.subdomain), notice: t('crud.created_successfully!', name: Post.model_name.human)
     else
       render :new
     end
@@ -29,7 +29,7 @@ class Settings::PostsController < ApplicationController
 
   def update
     if @post.update post_params
-      redirect_to post_url(@post, host: Settings.host, subdomain: @blog.subdomain), notice: t('crud.updated_successfully!', name: Post.model_name.human)
+      redirect_to post_url(@post, subdomain: @blog.subdomain), notice: t('crud.updated_successfully!', name: Post.model_name.human)
     else
       render :edit
     end

@@ -18,7 +18,7 @@
       <tr>
         <td><%= link_to blog.name, blog %></td>
         <td><%= blog.subdomain %></td>
-        <td><%= link_to root_url(host: Settings.host, subdomain: blog.subdomain), root_url(host: Settings.host, subdomain: blog.subdomain) %></td>
+        <td><%= link_to root_url(subdomain: blog.subdomain), root_url(subdomain: blog.subdomain) %></td>
         <td><%= link_to t('crud.edit'), edit_settings_blog_path(blog) %></td>
         <td><%= link_to t('crud.delete'), settings_blog_path(blog), method: :delete, data: {confirm: t('message.are_you_sure')} %></td>
       </tr>
