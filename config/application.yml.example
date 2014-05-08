@@ -20,14 +20,16 @@ development:
   recipient: foo@gmail.com
   http_auth_name: admin
   http_auth_password: "12345"
-  host: 'lagdown.dev'
-  smtp_settings:
-    address: smtp.gmail.com
-    port: 587
-    user_name: foo@gmail.com
-    password: PASSWORD
-    authentication: plain
-    enable_starttls_auto: true
+  action_mailer:
+    default_url_options:
+      :host: lvh.me:3000
+    smtp_settings:
+      :address: smtp.gmail.com
+      :port: 587
+      :user_name: foo@gmail.com
+      :password: PASSWORD
+      :authentication: plain
+      :enable_starttls_auto: true
 
 test:
   <<: *defaults
