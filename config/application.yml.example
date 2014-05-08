@@ -4,7 +4,7 @@ defaults: &defaults
 
 development:
   <<: *defaults
-  oauth_providers: [facebook, google, github]
+  oauth_providers: []
   oauth:
     github:
       - "CLIENT"
@@ -17,12 +17,13 @@ development:
       - "SECRET"
       -
         :name: google
-  recipient: foo@gmail.com
+
+  recipient: treekey999@gmail.com
   http_auth_name: admin
   http_auth_password: "12345"
-  host: 'lagdown.dev'
+  host: 'localhost'
   smtp_settings:
-    address: smtp.gmail.com
+    address: treekey999.gmail.com
     port: 587
     user_name: foo@gmail.com
     password: PASSWORD
