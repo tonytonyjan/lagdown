@@ -30,6 +30,10 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, omniauth_providers: Settings.oauth_providers
+  
+  #avatar         
+  mount_uploader :avatar, AvatarUploader
+
   # scope macros
 
   # Concerns macros

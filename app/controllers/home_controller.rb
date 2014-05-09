@@ -10,7 +10,7 @@ before_action :set_user, only: [:about]
   def about
     @blogs = @user.blogs
     # Blog.joins(:posts).where(:user_id => 1).count
-    @recent = Post.where(blog_id: @blogs.map{|b| b.id}).order(created_at: :desc)
+    @recent = Post.where(blog_id: @blogs.map{|b| b.id}).order(created_at: :desc).limit(13)
   end
 
 

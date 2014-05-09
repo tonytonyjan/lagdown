@@ -1,6 +1,9 @@
 <%= simple_form_for [:settings, @user], **bootstrap_form_options(form_class: 'form-horizontal') do |f| %>
+
+  <%= f.label :avatar %><br><%= f.file_field :avatar %>
   <%= f.input :nickname %>
   <%= f.input :about %>
   <%= f.input :homepage %>
+
   <%= f.submit t('.update') %>
 <% end %>

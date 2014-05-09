@@ -11,6 +11,7 @@ en:
         homepage: 部落格
         about: 關於我
         created_at: 創建日期
+        avatar: 大頭貼
       blog:
         name: 部落格名稱
         subdomain: 子網域

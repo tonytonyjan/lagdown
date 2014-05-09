@@ -1,13 +1,17 @@
 <div class="row">
     <div class="col-sm-4">
-      <% %i[nickname email homepage created_at about].each do |user_attr|%>
-      <dl>
-        <dt><%= User.human_attribute_name(user_attr) %>：</dt>
-        <dd><%=@user.send(user_attr)%></dd>
-      </dl>
-      <%end%>
+      
+      <%= image_tag @user.avatar,size:"250x225",alt: "photo",class: "thumbnail" %>
+      
+      <div class="bg-success" style="padding:10px;line-height:30px;font-size:18px">
+        <% %i[nickname email homepage created_at about].each do |user_attr|%>
+        <dl>
+          <kbd ><%= User.human_attribute_name(user_attr) %>：</kbd>
+          <dd><%=@user.send(user_attr)%></dd>
+        </dl>
+        <%end%>
 
- 
+      </div><!--bg color-->
     </div><!--col-sm-->
 
     <div class="col-sm-8">
