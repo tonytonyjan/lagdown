@@ -1,2 +1,23 @@
 en:
   site_name: Lagdown
+  about:
+    blog_list: 部落格清單
+    recent: 近期發文
+  activerecord:
+    attributes:
+      user: 
+        email: 信箱
+        nickname: 暱稱
+        homepage: 部落格
+        about: 關於我
+        created_at: 創建日期
+      blog:
+        name: 部落格名稱
+        subdomain: 子網域
+        created_at: 發佈日期
+        updated_at: 最後更新
+      post:
+        title: 標題
+        blog: 部落格
+        created_at: 發佈日期
+        updated_at: 最後更新

@@ -11,6 +11,10 @@ Lagdown::Application.routes.draw do
       end
       resource :user, only: %i[edit update]
     end
+
+    # /users/:id 使用者個人頁
+    get 'users/about' => 'home#about', :as => :about
+
   end
 
   constraints(Subdomain) do
