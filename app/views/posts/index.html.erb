@@ -1,5 +1,11 @@
 <div class="page-header">
-  <h1><%= @blog.name %></h1>
+  <h1>
+    <%= @blog.name %>
+    <a href="<%= rss_path%>">
+      <%= image_tag "rss.png",size:"50x20",alt: "rss.tag"%>
+    </a>
+  </h1>
+
 </div>
 <% @posts.each do |post| %>
   <div class="page-header">
@@ -9,6 +15,8 @@
     <%= sanitize LagdownRenderer.render(post.content) %>
   </div>
 <% end %>
+
+
 <%= paginate @posts %>
 
 <%= mathjax_script_tag %>
