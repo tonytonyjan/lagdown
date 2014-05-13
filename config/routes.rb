@@ -21,7 +21,7 @@ Lagdown::Application.routes.draw do
     resources :posts, only: %i[index show]
     
     # RSS訂閱
-    get 'users/rss' => 'posts#rss', :as => :rss
+    get 'rss' => 'posts#rss'
   end 
 
   namespace :admin do

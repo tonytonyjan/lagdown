@@ -49,8 +49,7 @@ class PostsController < ApplicationController
             item.updated = p.updated_at.to_s
           end
         end
-
-      end
+  end
 
       # respond_to do |format|
       #   format.xml { render :xml => @rss.to_xml }

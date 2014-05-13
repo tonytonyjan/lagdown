@@ -1,9 +1,7 @@
 <div class="page-header">
   <h1>
     <%= @blog.name %>
-    <a href="<%= rss_path%>">
-      <%= image_tag "rss.png",size:"50x20",alt: "rss.tag"%>
-    </a>
+    <%= link_to (image_tag "rss.png",size:"50x20",alt: "rss.tag"),rss_path%>
   </h1>
 
 </div>

@@ -32,12 +32,16 @@ class Blog < ActiveRecord::Base
   validate :limit_blog_number, on: :create
 
   # callbacks
-
+  before_save :downcase
   # other
 
   protected
   # callback methods
   def limit_blog_number
     errors.add(:base, :too_many_blogs) if user.blogs.size > 3
+  end
+
+  def downcase
+    self.subdomain = self.subdomain.downcase
   end
 end
