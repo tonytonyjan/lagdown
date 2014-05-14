@@ -46,14 +46,12 @@
         <% @recent.each do |rec_post|%>
           <% post_blog = Blog.find(rec_post.blog_id) %>
         <tr>
-          <td><%= link_to rec_post.title,post_url(rec_post, subdomain: post_blog.subdomain)%>  
+          <td><%= link_to rec_post.title,post_url(rec_post, subdomain: post_blog.subdomain)%>
             <span class="label label-danger"><%= "New" if rec_post.created_at > (Time.now - 1.hour) %></span></td>
           <td><%= link_to post_blog.name, root_url(host: Settings.host, subdomain: post_blog.subdomain)%></td>
           <td><%= rec_post.updated_at.+(8.hour).strftime("%p %I:%M / %F")%></td>
         </tr>
         <%end%>
-
-
 
       </table>
     </div><!--col-sm-->

@@ -108,4 +108,11 @@ module ApplicationHelper
       end # attr_names.map
     end # content_tag
   end # def dl_for
+
+  def gly_icon icon,btn_class,url,**options
+    link_to url,class: "#{btn_class}",**options do 
+      content_tag(:span,"",class: "glyphicon glyphicon-#{icon}")
+    end
+  end
+
 end

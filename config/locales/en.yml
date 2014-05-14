@@ -3,6 +3,9 @@ en:
   about:
     blog_list: 部落格清單
     recent: 近期發文
+  blog:
+    manage: 文章管理
+    about: 使用者個人頁
   activerecord:
     attributes:
       user: 
