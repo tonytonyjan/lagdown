@@ -3,8 +3,17 @@
   <div class="btn-group">
     <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"><%= c.name%> <span class="caret"></span>
     </button>
+
     <ul class="dropdown-menu" role="menu">
-      <li><%= gly_icon "Delete","minus","btn btn-xs",settings_category_path(c), method: :delete, data: {confirm: t('message.are_you_sure')}%></li>
+      <li><%= gly_icon "Delete","minus-sign","btn btn-xs",settings_category_path(c), method: :delete, data: {confirm: t('message.are_you_sure')}%></li>
+      
+      <li class="divider"></li>
+
+      <% @blogs.each do |b| %>
+
+      <li><%= link_to b.name,settings_category_path(c,:blog_id => b.id),method: :put%></li>
+      <%end%>
+
     </ul>
   </div>
 <%end%>
@@ -18,7 +27,7 @@
   <%= f.input :name%>
 </class>
   <button type="submit" class="btn btn-success">
-    <span class="glyphicon glyphicon-plus"></span> Add
+    <span class="glyphicon glyphicon-plus-sign"></span> Add
   </button>
 
   <%= f.error_notification class: 'alert alert-danger' %>
