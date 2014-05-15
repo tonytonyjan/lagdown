@@ -82,10 +82,10 @@ group :development, :test do
   gem 'capistrano-rails'
 
   gem 'awesome_print'
-  gem 'pry-rails'
-  gem 'pry-remote'
-  gem 'pry-stack_explorer'
-  gem 'pry-debugger'
+  # gem 'pry-rails'
+  # gem 'pry-remote'
+  # gem 'pry-stack_explorer'
+  # gem 'pry-debugger'
 
   gem 'factory_girl_rails', :require => false
   gem "rspec-rails"
