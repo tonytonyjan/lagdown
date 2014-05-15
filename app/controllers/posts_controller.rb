@@ -1,3 +1,5 @@
+require "rss"
+
 class PostsController < ApplicationController
   before_action :set_blog, only: %i[index show rss]
   before_action :set_post, only: %i[show]
@@ -30,7 +32,6 @@ class PostsController < ApplicationController
   end
 
   def rss
-  require "rss"
       @rss = RSS::Maker.make("2.0") do |maker|
         maker.channel.language = "en"
         maker.channel.author = @blog.subdomain
