@@ -1,14 +1,16 @@
 <%= dl_for @blog, :name, :subdomain %>
-<%= link_to t('crud.new!', resource: Post.model_name.human), new_settings_blog_post_path(@blog) %> |
+
 <%= link_to t('crud.edit'), [:edit, @blog] %> |
 <%= link_to t('action.back'), Settings::Blog %>
 
+<hr>
 <%= paginate @posts %>
 
 <table class="table table-hover">
   <thead>
     <tr>
-      <th><h1><%= Post.human_attribute_name(:title) %></h1></th>
+      <td><h1><%= Post.human_attribute_name(:title) %></h1></td>
+      <td><%= gly_icon t('crud.new!',resource: Post.model_name.human),"pencil","btn btn-lg btn-success",new_settings_blog_post_path(@blog)%></td>
     </tr>
   </thead>
   <tbody>
@@ -27,8 +29,8 @@
             </div> 
           </td>
           <td style="width:20%">
-            <%= gly_icon "edit","btn btn-primary btn-lg",edit_settings_blog_post_path(@blog,post)%>
-            <%= gly_icon "trash","btn btn-danger btn-lg",[@blog,post],method: :delete, data: {confirm: t('message.are_you_sure')}%>
+            <%= gly_icon t('crud.edit'),"edit","btn btn-primary btn-lg",edit_settings_blog_post_path(@blog,post)%>
+            <%= gly_icon '',"trash","btn btn-danger btn-lg",[@blog,post],method: :delete, data: {confirm: t('message.are_you_sure')}%>
           </td>
         </tr>
       <% end %>

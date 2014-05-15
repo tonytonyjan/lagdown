@@ -109,9 +109,9 @@ module ApplicationHelper
     end # content_tag
   end # def dl_for
 
-  def gly_icon icon,btn_class,url,**options
+  def gly_icon text,icon,btn_class,url,**options
     link_to url,class: "#{btn_class}",**options do 
-      content_tag(:span,"",class: "glyphicon glyphicon-#{icon}")
+      content_tag :span," #{text}",class: "glyphicon glyphicon-#{icon}"
     end
   end
 

@@ -4,21 +4,21 @@ en:
   message:
     are_you_sure: Are you sure?
   crud:
-    new!: new %{resource}
-    new: new
+    new!: New %{resource}
+    new: New
     create!: create %{resource}
-    create: create
+    create: Create
     show!: show %{resource}
-    show: show
+    show: Show
     read!: show %{resource}
     read: show
     edit!: edit %{resource}
-    edit: edit
+    edit: Edit
     update!: update %{resource}
-    update: update
+    update: Update
     delete!: delete %{resource}
-    delete: delete
+    delete: Delete
     destroy!: destroy %{resource}
-    destroy: destroy
+    destroy: Destroy
     created_successfully!: "%{name} created successfully"
     updated_successfully!: "%{name} updated successfully"
