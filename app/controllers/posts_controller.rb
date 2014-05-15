@@ -1,8 +1,9 @@
+require "rss"
 class PostsController < ApplicationController
   before_action :set_blog, only: %i[index show rss]
   before_action :set_post, only: %i[show]
   before_action :set_user, only: %i[rss]
-  authorize_resource except: :preview
+  authorize_resource except: [:preview,:rss]
   layout 'blog'
 
   def index
@@ -30,7 +31,6 @@ class PostsController < ApplicationController
   end
 
   def rss
-  require "rss"
       @rss = RSS::Maker.make("2.0") do |maker|
         maker.channel.language = "en"
         maker.channel.author = @blog.subdomain
@@ -45,11 +45,12 @@ class PostsController < ApplicationController
             item.link = post_url(p, subdomain: @blog.subdomain)
             item.author = @blog.subdomain
             item.title = p.title
-            item.description = p.content
+            item.description = p.content.slice(1..100) + " ......"
             item.updated = p.updated_at.to_s
           end
         end
   end
+
 
       # respond_to do |format|
       #   format.xml { render :xml => @rss.to_xml }
@@ -67,6 +68,6 @@ private
   end
 
   def set_user
-    @user = User.find(current_user.id)
+    @user = Blog.find_by_subdomain!(request.subdomain).user
   end
 end

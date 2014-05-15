@@ -4,7 +4,7 @@ defaults: &defaults
 
 development:
   <<: *defaults
-  oauth_providers: []
+  oauth_providers: [facebook, google, github]
   oauth:
     github:
       - "CLIENT"
@@ -17,18 +17,19 @@ development:
       - "SECRET"
       -
         :name: google
-
-  recipient: treekey999@gmail.com
+  recipient: foo@gmail.com
   http_auth_name: admin
   http_auth_password: "12345"
-  host: 'localhost'
-  smtp_settings:
-    address: treekey999.gmail.com
-    port: 587
-    user_name: foo@gmail.com
-    password: PASSWORD
-    authentication: plain
-    enable_starttls_auto: true
+  action_mailer:
+    default_url_options:
+      :host: lvh.me:3000
+    smtp_settings:
+      :address: smtp.gmail.com
+      :port: 587
+      :user_name: foo@gmail.com
+      :password: PASSWORD
+      :authentication: plain
+      :enable_starttls_auto: true
 
 test:
   <<: *defaults

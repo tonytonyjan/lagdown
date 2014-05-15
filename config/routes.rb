@@ -22,6 +22,8 @@ Lagdown::Application.routes.draw do
     
     # RSS訂閱
     get 'rss' => 'posts#rss'
+    # 使用者個人頁
+    get 'about' => 'home#about', :as => :profile
   end 
 
   namespace :admin do
