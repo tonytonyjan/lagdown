@@ -16,7 +16,7 @@ class Settings::UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:nickname, :about, :homepage)
+    params.require(:user).permit(:nickname, :about, :homepage, :avatar)
   end
 
   def set_user

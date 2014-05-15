@@ -11,11 +11,17 @@ Lagdown::Application.routes.draw do
       end
       resource :user, only: %i[edit update]
     end
+
+    # 使用者個人頁
+    get 'users/about' => 'home#about', :as => :about
   end
 
   constraints(Subdomain) do
     root 'posts#index', as: :blog_root
     resources :posts, only: %i[index show]
+    
+    # RSS訂閱
+    get 'rss' => 'posts#rss'
   end 
 
   namespace :admin do

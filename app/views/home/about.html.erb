@@ -1,0 +1,60 @@
+<div class="row">
+    <div class="col-sm-4">
+      
+      <%= image_tag @user.avatar,size:"250x225",alt: "photo",class: "thumbnail" %>
+        
+      <div class="bg-success" style="padding:10px;line-height:30px;font-size:18px">
+        <% %i[nickname email homepage created_at about].each do |user_attr|%>
+        <dl>
+          <kbd ><%= User.human_attribute_name(user_attr) %>：</kbd>
+          <dd><%=@user.send(user_attr)%></dd>
+        </dl>
+        <%end%>
+
+      </div><!--bg color-->
+    </div><!--col-sm-->
+
+    <div class="col-sm-8">
+      <h2><%=t('about.blog_list')%><small> ( <%= @blogs.count%> )</small></h2>
+
+      <table class="table table-hover">
+      <tr class="info">
+        <% %i[name subdomain created_at updated_at].each do |blog_attr| %>   
+          <td><%= Blog.human_attribute_name(blog_attr)%></td>
+        <%end%>
+      </tr>
+
+      <% @blogs.each do |each_blog|%>
+        <tr>
+          <td><%= link_to each_blog.name, settings_blog_path(each_blog),target: "_blank" %></td>
+          <td><%= link_to each_blog.subdomain,root_url(host: Settings.host, subdomain: each_blog.subdomain),target: "_blank"%></td>
+          <td><%=each_blog.created_at.+(8.hour).strftime("%F %T") %></td>
+          <td><%=each_blog.updated_at.+(8.hour).strftime("%F %T") %></td>
+        </tr>
+      <%end%>
+      </table>
+
+      <h2><%= t('about.recent')%><small> - Recent Article</small></h2>
+        
+      <table class="table table-hover">
+      <tr class="info">
+        <% %i[title blog updated_at].each do |post_attr| %>   
+          <td><%= Post.human_attribute_name(post_attr)%></td>
+        <%end%>
+      </tr>
+      
+        <% @recent.each do |rec_post|%>
+          <% post_blog = Blog.find(rec_post.blog_id) %>
+        <tr>
+          <td><%= link_to rec_post.title,post_url(rec_post, subdomain: post_blog.subdomain),target: "_blank"%>
+            <span class="label label-danger"><%= "New" if rec_post.created_at > (Time.now - 1.hour) %></span></td>
+          <td><%= link_to post_blog.name, root_url(host: Settings.host, subdomain: post_blog.subdomain),target: "_blank"%></td>
+          <td><%= rec_post.updated_at.+(8.hour).strftime("%p %I:%M / %F")%></td>
+        </tr>
+        <%end%>
+
+      </table>
+    </div><!--col-sm-->
+</div><!--row-->
+
+
