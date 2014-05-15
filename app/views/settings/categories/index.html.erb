@@ -1,0 +1,32 @@
+<h1>List:</h1>
+<% Category.all.each do |c|%>
+  <div class="btn-group">
+    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"><%= c.name%> <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu" role="menu">
+      <li><%= gly_icon "Delete","minus","btn btn-xs",settings_category_path(c), method: :delete, data: {confirm: t('message.are_you_sure')}%></li>
+    </ul>
+  </div>
+<%end%>
+
+<hr>
+
+<h3>Add Category</h3>
+
+<%= simple_form_for @category,url: {action: "create"} do |f| %>
+<class class="form-inputs">
+  <%= f.input :name%>
+</class>
+  <button type="submit" class="btn btn-success">
+    <span class="glyphicon glyphicon-plus"></span> Add
+  </button>
+
+  <%= f.error_notification class: 'alert alert-danger' %>
+  <% if base_errors = @category.errors[:base].presence %>
+    <div class="alert alert-danger">
+      <% base_errors.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </div>
+  <% end %>
+<% end %>

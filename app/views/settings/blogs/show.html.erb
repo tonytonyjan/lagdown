@@ -3,6 +3,12 @@
 <%= link_to t('crud.edit'), [:edit, @blog] %> |
 <%= link_to t('action.back'), Settings::Blog %>
 
+<h2 class="bg-info"> 
+<% @blog.categories.each do |c|%>
+Cate:<%= c.name%>
+<%end%>
+</h2>
+
 <hr>
 <%= paginate @posts %>
 
