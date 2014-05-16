@@ -1,7 +1,16 @@
 class Settings::CategoriesController < ApplicationController
   include SettingsConcern
-  before_action :set_cat , only: %i[destroy update]
-  before_action :set_blog , only: %i[index create]
+  before_action :set_cat , only: %i[destroy update edit show]
+  before_action :set_blog , only: %i[index create edit show]
+
+  def index
+    @category = Category.new
+    @list = []
+    @blogs.each do |b| 
+      @list.push({:name => b.name,:id => b.id})
+    end
+    @list.push({:name =>'尚未分類',:id => nil})
+  end
 
   def create
     @category = Category.new(category_params)
@@ -19,13 +28,21 @@ class Settings::CategoriesController < ApplicationController
     redirect_to settings_categories_path
   end
 
-  def index
-    @category = Category.new
+  def edit
+    @category = @cat
   end
 
   def update
-    @cat.update params.permit(:blog_id)
+    @cat.update category_params
     redirect_to settings_categories_path
+  end
+
+  def show
+    if @cat.update params.permit(:blog_id)
+    redirect_to settings_categories_path
+    else
+    render 'index'
+    end
   end
 
 private

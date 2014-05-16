@@ -1,5 +1,6 @@
+<h4>
+<%= gly_icon t('action.back'),Settings::Blog,'backward','btn-default'%>
+</h4>
 <h1><%= t('crud.edit!', resource: Settings::Blog.model_name.human).titleize %></h1>
 
 <%= render 'form' %>
-
-<%= link_to t('action.back'), @blog %>

@@ -7,7 +7,7 @@ class PostsController < ApplicationController
   layout 'blog'
 
   def index
-    @posts = @blog.posts.page(params[:page])
+    @posts = @blog.posts.order(created_at: :desc).page(params[:page])
   end
 
   def show

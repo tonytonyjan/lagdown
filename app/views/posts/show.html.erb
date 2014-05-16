@@ -1,7 +1,17 @@
 <div class="page-header">
-  <h1><%= @post.title %></h1>
-</div>
+  <div class="row">
+    <div class="col-sm-10">
+      <h1><%= @post.title %></h1>      
+    </div><!--col-sm-->
+    <div class="col-sm-2">
+      <div>
+        <%= link_to t('blog.manage'),settings_blog_url(@blog),class: "btn btn-block btn-primary"%>
+        <%= link_to t('blog.about'),profile_path,class: "btn btn-block btn-warning"%>
+      </div>
+    </div><!--col-sm-->
+  </div><!--row-->
 
+<hr>
 <div class="highlight">
   <%= sanitize LagdownRenderer.render(@post.content) %>
 </div>

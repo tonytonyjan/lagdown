@@ -1,16 +1,24 @@
+<%= simple_form_for [@blog, @post], **bootstrap_form_options(form_class: 'form-horizontal') do |f| %>
+
+<h4>
+  <%=t('blog.category')%>  : <%=select("post", "category_id",@blog.categories.all.collect {|c| [ c.name, c.id ] }, { include_blank: true })%>
+</h4>
+
+<hr>
 <div class="row">
   <div class="col-sm-6">
-    <%= simple_form_for [@blog, @post], **bootstrap_form_options(form_class: 'form-horizontal') do |f| %>
       <%= f.input :title %>
       <div id="editor" data-target="#post_content"></div>
       <%= f.input :content, as: :hidden %>
+  <hr>
       <%= f.submit %>
-    <% end %>
   </div>
   <div class="col-sm-6">
     <%= button_tag t('.preview'), type: :button, id: :preview_btn %>
     <div id="preview_area"></div>
   </div>
 </div>
+
+<% end %>
 <%= mathjax_script_tag 'preview_area' %>
 <%= javascript_include_tag 'mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML' %>

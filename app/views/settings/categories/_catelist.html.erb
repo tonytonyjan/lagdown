@@ -1,0 +1,26 @@
+<h1><%= t('category.list')%></h1>
+<hr>
+
+<% @list.each do |blog|%>
+<h5><%= blog[:name]%></h5>
+  <% Category.where(blog_id: blog[:id]).order(:id).each do |c|%>
+
+    <div class="btn-group">
+      <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"><%= c.name%> <span class="caret"></span>
+      </button>
+
+      <ul class="dropdown-menu" role="menu">
+        <li><%= gly_icon t('category.edit'),edit_settings_category_path(c),"edit","btn-xs"%></li>
+        <li class="divider"></li>
+
+        <% @blogs.each do |b| %>
+        <li><%= link_to b.name,settings_category_path(c,:blog_id => b.id)%></li>
+        <%end%>
+        <li><%= gly_icon t('category.delete'),settings_category_path(c),"minus-sign","btn-xs", method: :delete, data: {confirm: t('message.are_you_sure')}%></li>
+      </ul>
+    </div><!--btn group-->
+
+  <%end%><!--each category-->
+<hr>  
+
+<%end%><!--each blog list-->

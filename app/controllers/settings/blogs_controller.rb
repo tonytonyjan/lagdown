@@ -8,7 +8,14 @@ class Settings::BlogsController < ApplicationController
   end
 
   def show
-    @posts = @blog.posts.page(params[:page]).per(10)
+    if params[:category_id]
+      @posts = @blog.posts.order(created_at: :desc).where(category_id: params[:category_id]).page(params[:page]).per(10)
+    else
+      @posts = @blog.posts.order(created_at: :desc).page(params[:page]).per(10)
+    end
+
+    all_cate_id = Category.where(blog_id: @blog.id).map{|b| b.id}
+    @posts_count = Post.where(category_id: all_cate_id).count.to_s
   end
 
   def new

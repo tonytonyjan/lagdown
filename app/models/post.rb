@@ -12,7 +12,7 @@
 
 class Post < ActiveRecord::Base
   # scope macros
-
+  
   # Concerns macros
 
   # Constants
