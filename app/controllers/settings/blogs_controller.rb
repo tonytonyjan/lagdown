@@ -51,10 +51,16 @@ class Settings::BlogsController < ApplicationController
 
   private
   def set_blog
-    @blog = Settings::Blog.find(params[:id])
+    # 有漏洞，可藉由網址參數直接訪問網頁
+    # @blog = Settings::Blog.find(params[:id])
+
+    # 藉由判斷 user_id = current_user.id 來斷定使用者，是否有更好的解法？
+    user_id = Settings::Blog.find(params[:id]).user_id
+    @blog = Settings::Blog.find(params[:id]) if user_id == current_user.id
   end
 
   def blog_params
     params.require(:settings_blog).permit(:name, :subdomain)
   end
+
 end

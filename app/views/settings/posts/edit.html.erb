@@ -1,5 +1,8 @@
 <div class="page-header">
-  <h1><%= t('crud.edit!', resource: Post.model_name.human).titleize %></h1>
+  <h1><%= @blog.name%></h1>
+  <h2 style="color: #4671D5">
+    <%= t('crud.edit!', resource: Post.model_name.human).titleize %>
+  </h2>
 </div>
 
 <%= render 'form' %>

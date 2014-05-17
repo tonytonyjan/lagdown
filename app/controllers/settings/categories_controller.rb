@@ -3,7 +3,7 @@ class Settings::CategoriesController < ApplicationController
   before_action :set_cat , only: %i[destroy update edit show]
   before_action :set_blogs , only: %i[index create edit show]
   before_action :set_index , only: %i[index create]
-  
+
   def index
     @category = Category.new
   end
@@ -60,12 +60,19 @@ private
     params.require(:blog).permit(:blog_id)
   end
 
-  def set_cat
-    @cat = Category.find(params[:id])
-  end
-
   def set_blogs
     @blogs = current_user.blogs
+  end
+
+  def set_cat
+    blog_id =  Category.find(params[:id]).blog_id
+    @cat = Category.find(params[:id]) if check_blog blog_id
+  end
+
+  # check the pramas if id really is current_user's
+  def check_blog id
+    blogs_id = current_user.blogs.map {|blog| blog.id}
+    blogs_id.include?(id)
   end
 
   def set_index
