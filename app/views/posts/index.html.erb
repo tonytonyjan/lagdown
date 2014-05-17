@@ -23,9 +23,11 @@
         <blockquote style="border-color: #FFB840">
           <h3><%= link_to post.title, post_path(post) %></h3>
           <footer>
-            <span class="glyphicon glyphicon-search">【<%= Category.find(post.category_id).name%>】</span>
+            <span class="glyphicon glyphicon-search">【<%= Category.where(id:post.category_id).pluck(:name).first%>】</span>
+            <p>
             【<%= t('crud.updated')%> : <%= post.updated_at%>】
             【<%= t('crud.created')%> : <%= post.created_at%>】        
+            </p>    
           </footer>
         </blockquote>
       </div>

@@ -9,6 +9,7 @@ en:
     manage: 文章管理
     about: 使用者個人頁
     category: 文章分類
+    choose: 選擇部落格
   category:
     list: 群組清單
     delete: 刪除群組

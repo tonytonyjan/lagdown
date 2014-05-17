@@ -13,7 +13,7 @@ Lagdown::Application.routes.draw do
       resources :categories
     end
 
-    # 使用者個人頁
+    # 使用者個人頁(user)
     get 'users/about' => 'home#about', :as => :about
   end
 

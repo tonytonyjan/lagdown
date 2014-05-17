@@ -8,7 +8,7 @@
 #  blog_id    :integer          not null
 #  created_at :datetime
 #  updated_at :datetime
-#
+#  view_count :integer          default:0
 
 class Post < ActiveRecord::Base
   # scope macros

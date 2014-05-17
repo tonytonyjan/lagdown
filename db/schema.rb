@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140515082039) do
+ActiveRecord::Schema.define(version: 20140517105150) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -67,12 +67,13 @@ ActiveRecord::Schema.define(version: 20140515082039) do
   add_index "o_auth_credentials", ["user_id"], name: "index_o_auth_credentials_on_user_id", using: :btree
 
   create_table "posts", force: true do |t|
-    t.string   "title",       null: false
-    t.text     "content",     null: false
-    t.integer  "blog_id",     null: false
+    t.string   "title",                   null: false
+    t.text     "content",                 null: false
+    t.integer  "blog_id",                 null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "category_id"
+    t.integer  "view_count",  default: 0
   end
 
   add_index "posts", ["blog_id"], name: "index_posts_on_blog_id", using: :btree

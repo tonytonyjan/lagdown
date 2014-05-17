@@ -9,18 +9,22 @@
       <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"><%= c.name%> <span class="caret"></span>
       </button>
 
-      <ul class="dropdown-menu" role="menu">
+      <ul class="dropdown-menu" role="menu"><!--edit icon-->
         <li><%= gly_icon t('category.edit'),edit_settings_category_path(c),"edit","btn-xs"%></li>
-        <li class="divider"></li>
-
+        
+        <li class="divider"></li><!--change blog icon-->
         <% @blogs.each do |b| %>
-        <li><%= link_to b.name,settings_category_path(c,:blog_id => b.id)%></li>
+          <li>
+            <%= link_to b.name,settings_category_path(c,:blog_id => b.id) if b.id != c.blog_id%>
+          </li>
         <%end%>
+
+        <li class="divider"></li><!--delete icon-->
         <li><%= gly_icon t('category.delete'),settings_category_path(c),"minus-sign","btn-xs", method: :delete, data: {confirm: t('message.are_you_sure')}%></li>
       </ul>
-    </div><!--btn group-->
+    </div><!--each btn_group-->
 
   <%end%><!--each category-->
+  
 <hr>  
-
 <%end%><!--each blog list-->
