@@ -8,14 +8,14 @@ class Settings::BlogsController < ApplicationController
   end
 
   def show
-    if params[:category_id]
+    if params[:category_id] == "null"
+      @posts = @blog.posts.order(created_at: :desc).where(category_id: nil).page(params[:page]).per(10)      
+    elsif params[:category_id] 
       @posts = @blog.posts.order(created_at: :desc).where(category_id: params[:category_id]).page(params[:page]).per(10)
     else
       @posts = @blog.posts.order(created_at: :desc).page(params[:page]).per(10)
     end
-
-    all_cate_id = Category.where(blog_id: @blog.id).map{|b| b.id}
-    @posts_count = Post.where(category_id: all_cate_id).count.to_s
+    @cat_nil = @blog.posts.where(category_id: nil).count
   end
 
   def new

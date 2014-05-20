@@ -1,6 +1,7 @@
 en:
   action:
     back: Back
+    edit: Edit
   message:
     are_you_sure: Are you sure?
   crud:

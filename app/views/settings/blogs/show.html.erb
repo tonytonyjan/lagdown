@@ -9,12 +9,17 @@
 
 
 <hr><!--Category list-->
-<% str_all = t('category.all')+" ( " + @posts_count + " )"  %>
+<!--cate_all-->
+<% str_all = t('category.all')+" ( " + @blog.posts.count.to_s + " )"  %>
 <%= button_li str_all,settings_blog_path%>
+<!--cate_each-->
 <% @blog.categories.each do |c|%>
 <% cc = c.name.to_s + " ( "+ c.posts.count.to_s + " )" %>
 <%= button_li cc,settings_blog_path(@blog,category_id: c.id)%>
 <%end%>
+<!--cate_nil-->
+<% str_nil = t('category.nil')+" ( " + @cat_nil.to_s + " )" if @cat_nil > 0 %>
+<%= button_li str_nil,settings_blog_path(@blog,category_id: "null") if @cat_nil > 0 %>
 
 <!--Posts list-->
 <p><%= paginate @posts %></p>
@@ -34,6 +39,7 @@
               <%= link_to post_url(post,subdomain: @blog.subdomain),class: "list-group-item" do %>
                 <h4 class="list-group-item-heading"><%= post.title%></h4>
                 <span class="glyphicon glyphicon-search">【<%= Category.where(id:post.category_id).pluck(:name).first%>】</span>
+                  【<%= t('post.view_count')%> : <%= post.view_count%>】
                   【<%= t('crud.updated')%> : <%= post.updated_at%>】
                   【<%= t('crud.created')%> : <%= post.created_at%>】            
                 <hr>
@@ -41,7 +47,7 @@
               <%end%>
             </div> 
           </td>
-          <td style="width:20%"><!--action button-->
+          <td style="width:20%"><!--action button: edit / delete-->
             <%= gly_icon t('crud.edit'),edit_settings_blog_post_path(@blog,post),"edit","btn-primary btn-lg"%>
             <%= gly_icon '',[@blog,post],"trash","btn-danger btn-lg",method: :delete,data: {confirm: t('message.are_you_sure')}%>
           </td>

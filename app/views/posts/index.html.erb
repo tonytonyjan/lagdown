@@ -4,7 +4,8 @@
       <h1>
         <%= @blog.name %>
         <%= link_to (image_tag "rss.png",size:"50x20",alt: "rss.tag"),rss_path%>
-      </h1>      
+      </h1>    
+
     </div><!--col-sm-->
     <div class="col-sm-2">
       <div>
@@ -23,7 +24,8 @@
         <blockquote style="border-color: #FFB840">
           <h3><%= link_to post.title, post_path(post) %></h3>
           <footer>
-            <span class="glyphicon glyphicon-search">【<%= Category.where(id:post.category_id).pluck(:name).first%>】</span>
+            <span class="glyphicon glyphicon-search">【<%= Category.where(id:post.category_id).pluck(:name).first%>】【<%= t('post.view_count')%>：<%= post.view_count%>】
+            </span>
             <p>
             【<%= t('crud.updated')%> : <%= post.updated_at%>】
             【<%= t('crud.created')%> : <%= post.created_at%>】        

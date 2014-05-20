@@ -84,8 +84,8 @@ private
     # @list.push({:name =>'尚未分類',:id => nil})
 
     @detail = {
-    :title => t('category.add'),
-    :gly_type => 'glyphicon-plus-sign',
-    :action => 'create'}
+    title: t('category.add'),
+    gly_type: 'glyphicon-plus-sign',
+    action: 'create'}
   end
 end

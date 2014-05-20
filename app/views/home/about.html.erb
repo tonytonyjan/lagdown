@@ -10,7 +10,6 @@
           <dd><%=@user.send(user_attr)%></dd>
         </dl>
         <%end%>
-
       </div><!--bg color-->
     </div><!--col-sm-->
 
@@ -38,7 +37,7 @@
         
       <table class="table table-hover">
       <tr class="info">
-        <% %i[title blog updated_at].each do |post_attr| %>
+        <% %i[title blog view_count updated_at].each do |post_attr| %>
           <td ><%= Post.human_attribute_name(post_attr)%></td>
         <%end%>
       </tr>
@@ -46,10 +45,11 @@
         <% @recent.each do |rec_post|%>
           <% post_blog = Blog.find(rec_post.blog_id) %>
         <tr>
-          <td class="col-md-6"><%= link_to rec_post.title,post_url(rec_post, subdomain: post_blog.subdomain),target: "_blank"%>
+          <td class="col-md-5"><%= link_to rec_post.title,post_url(rec_post, subdomain: post_blog.subdomain),target: "_blank"%>
             <span class="label label-danger"><%= "New" if rec_post.created_at > (Time.now - 1.hour) %></span></td>
           <td class="col-md-3"><%= link_to post_blog.name, root_url(host: Settings.host, subdomain: post_blog.subdomain),target: "_blank"%></td>
-          <td class="col-md-4"><%= rec_post.updated_at.+(8.hour).strftime("%p %I:%M - %m/%d")%></td>
+          <td class="col-md-1 text-center"><%= rec_post.view_count%></td>
+          <td class="col-md-2"><%= rec_post.updated_at.+(8.hour).strftime("%m/%d - %R ")%></td>
         </tr>
         <%end%>
 

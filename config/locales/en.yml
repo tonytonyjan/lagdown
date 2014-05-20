@@ -19,8 +19,10 @@ en:
     edit_t: 編輯
     submit: 送出
     back: 返回
-    unknown: 尚未分類
     all: 全部
+    nil: 尚未分類
+  post:
+    view_count: 瀏覽次數
   activerecord:
     attributes:
       user: 
@@ -40,3 +42,4 @@ en:
         blog: 部落格
         created_at: 發佈日期
         updated_at: 最後更新
+        view_count: 瀏覽

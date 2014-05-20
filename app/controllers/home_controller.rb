@@ -1,7 +1,6 @@
 class HomeController < ApplicationController
 before_action :set_user, only: [:about]
 
-
   def index
   end
 
