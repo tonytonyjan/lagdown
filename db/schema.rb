@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140509155749) do
+ActiveRecord::Schema.define(version: 20140519081351) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,6 +45,15 @@ ActiveRecord::Schema.define(version: 20140509155749) do
   add_index "blogs", ["subdomain"], name: "index_blogs_on_subdomain", unique: true, using: :btree
   add_index "blogs", ["user_id"], name: "index_blogs_on_user_id", using: :btree
 
+  create_table "categories", force: true do |t|
+    t.string   "name"
+    t.integer  "blog_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "categories", ["blog_id"], name: "index_categories_on_blog_id", using: :btree
+
   create_table "o_auth_credentials", force: true do |t|
     t.integer  "user_id",    null: false
     t.string   "provider",   null: false
@@ -58,14 +67,24 @@ ActiveRecord::Schema.define(version: 20140509155749) do
   add_index "o_auth_credentials", ["user_id"], name: "index_o_auth_credentials_on_user_id", using: :btree
 
   create_table "posts", force: true do |t|
-    t.string   "title",      null: false
-    t.text     "content",    null: false
-    t.integer  "blog_id",    null: false
+    t.string   "title",                   null: false
+    t.text     "content",                 null: false
+    t.integer  "blog_id",                 null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "category_id"
+    t.integer  "view_count",  default: 0
   end
 
   add_index "posts", ["blog_id"], name: "index_posts_on_blog_id", using: :btree
+  add_index "posts", ["category_id"], name: "index_posts_on_category_id", using: :btree
+
+  create_table "sessions", force: true do |t|
+    t.string   "ip"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "session_id"
+  end
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false

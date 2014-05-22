@@ -10,9 +10,10 @@ Lagdown::Application.routes.draw do
         resources :posts, only: %i[new create edit update destroy]
       end
       resource :user, only: %i[edit update]
+      resources :categories
     end
 
-    # 使用者個人頁
+    # 使用者個人頁(user)
     get 'users/about' => 'home#about', :as => :about
   end
 
@@ -22,6 +23,8 @@ Lagdown::Application.routes.draw do
     
     # RSS訂閱
     get 'rss' => 'posts#rss'
+    # 使用者個人頁
+    get 'about' => 'home#about', :as => :profile
   end 
 
   namespace :admin do

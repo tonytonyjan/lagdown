@@ -43,14 +43,27 @@ class Settings::PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :content)
+    params.require(:post).permit(:title, :content, :category_id)
   end
 
   def set_blog
-    @blog = Settings::Blog.find(params[:blog_id])
+    user_id = Settings::Blog.find(params[:blog_id]).user_id
+    @blog = Settings::Blog.find(params[:blog_id]) if check_user user_id
   end
 
   def set_post
-    @post = Post.find(params[:id])
+    blog_id = Post.find(params[:id]).blog_id 
+    @post = Post.find(params[:id]) if check_blog blog_id
   end
+
+  # check the pramas if id really is current_user's
+  def check_blog id
+    blogs_id = current_user.blogs.map {|blog| blog.id}
+    blogs_id.include?(id)
+  end
+  def check_user id
+    user_id = current_user.id
+    user_id == id
+  end
+
 end

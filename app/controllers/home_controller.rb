@@ -1,7 +1,6 @@
 class HomeController < ApplicationController
 before_action :set_user, only: [:about]
 
-
   def index
   end
 
@@ -17,7 +16,12 @@ before_action :set_user, only: [:about]
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
-      @user = User.find(current_user.id)
+      @blog = Blog.find_by(subdomain: request.subdomain)
+        if @blog
+          @user = @blog.user
+        else
+          @user = current_user
+        end
     end
 
 end

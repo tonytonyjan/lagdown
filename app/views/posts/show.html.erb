@@ -1,12 +1,24 @@
 <div class="page-header">
-  <h1><%= @post.title %></h1>
-</div>
+  <div class="row">
+    <div class="col-sm-10">
+      <h1><%= @post.title %></h1>
+    </div><!--col-sm-->
+    <div class="col-sm-2">
+      <div>
+        <%= link_to t('blog.manage'),settings_blog_url(@blog),class: "btn btn-block btn-primary"%>
+        <%= link_to t('blog.about'),profile_path,class: "btn btn-block btn-warning"%>
+      </div>
+    </div><!--col-sm-->
+  </div><!--row-->
 
+<hr>
 <div class="highlight">
   <%= sanitize LagdownRenderer.render(@post.content) %>
 </div>
-<%= link_to t('.back'), root_path %>
-<%= link_to t('.edit'), edit_settings_blog_post_url(@blog, @post) if can? :edit, @post %>
+<br><br><br><br>
+<p class="text-right"><em><strong><%= t('post.view_count')%>：<%= @post.view_count%></strong></em></p>
+<%= gly_icon t('action.back'), root_path,'backward','btn-default' %>
+<%= gly_icon t('action.edit'),edit_settings_blog_post_url(@blog, @post),"edit","btn-primary" if can?(:edit, @post) %>
 
 <%= mathjax_script_tag %>
 

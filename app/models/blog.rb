@@ -25,7 +25,7 @@ class Blog < ActiveRecord::Base
   # association macros
   belongs_to :user
   has_many :posts, dependent: :destroy
-
+  has_many :categories
   # validation macros
   validates :user, :name, :subdomain, presence: true
   validates :subdomain, uniqueness: true, exclusion: { in: SUBDOMAIN_BLACK_LIST }

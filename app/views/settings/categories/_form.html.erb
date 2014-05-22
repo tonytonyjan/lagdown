@@ -1,0 +1,22 @@
+<h3><%= @detail[:title] %></h3>
+
+<%= simple_form_for @category,url: {action: @detail[:action]} do |f| %>
+<class class="form-inputs">
+  <%= f.input :name%>
+  <%=t('blog.choose')%>  : <%=select("category", "blog_id",@blogs.all.collect {|b| [ b.name, b.id ] })%>
+
+</class>
+  <button type="submit" class="btn btn-success">
+    <span class="glyphicon <%= @detail[:gly_type]%>"></span> <%= t('category.submit')%>
+  </button>
+
+
+  <%= f.error_notification class: 'alert alert-danger' %>
+  <% if base_errors = @category.errors[:base].presence %>
+    <div class="alert alert-danger">
+      <% base_errors.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </div>
+  <% end %>
+<% end %>

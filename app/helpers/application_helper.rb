@@ -109,10 +109,15 @@ module ApplicationHelper
     end # content_tag
   end # def dl_for
 
-  def gly_icon text,icon,btn_class,url,**options
-    link_to url,class: "#{btn_class}",**options do 
-      content_tag :span," #{text}",class: "glyphicon glyphicon-#{icon}"
+  def gly_icon name,url,gly_type,btn_class,**options
+    link_to url,class: "btn #{btn_class}",**options do 
+      content_tag :span," #{name}",class: "glyphicon glyphicon-#{gly_type}"
     end
+  end
+
+  def button_li name,url
+    active = 'active' if request.fullpath == url
+    link_to(name, url,class: "btn btn-default #{active}")
   end
 
 end

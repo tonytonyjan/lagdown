@@ -1,11 +1,28 @@
 en:
   site_name: Lagdown
+  subdomain: 網域名稱
+  category: Category
   about:
     blog_list: 部落格清單
     recent: 近期發文
   blog:
     manage: 文章管理
     about: 使用者個人頁
+    category: 文章分類
+    choose: 選擇部落格
+  category:
+    list: 群組清單
+    delete: 刪除群組
+    add: 新增群組
+    add_t: 新增
+    edit: 編輯群組
+    edit_t: 編輯
+    submit: 送出
+    back: 返回
+    all: 全部
+    nil: 尚未分類
+  post:
+    view_count: 瀏覽次數
   activerecord:
     attributes:
       user: 
@@ -25,3 +42,4 @@ en:
         blog: 部落格
         created_at: 發佈日期
         updated_at: 最後更新
+        view_count: 瀏覽

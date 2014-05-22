@@ -1,41 +1,58 @@
-<%= dl_for @blog, :name, :subdomain %>
+<h4>
+<%= gly_icon t('action.back'),Settings::Blog,'backward','btn-default'%>
+<%= gly_icon t('crud.edit'),[:edit,@blog],'cog','btn btn-primary'%>
+</h4>
+<!--Blog detail-->
+<%= dl_for @blog, :name %>
+<%= t('subdomain')%><br>
+<%= link_to root_url(host: Settings.host, subdomain: @blog.subdomain).to_s,root_url(host: Settings.host, subdomain: @blog.subdomain)%>
 
-<%= link_to t('crud.edit'), [:edit, @blog] %> |
-<%= link_to t('action.back'), Settings::Blog %>
 
-<hr>
-<%= paginate @posts %>
+<hr><!--Category list-->
+<!--cate_all-->
+<% str_all = t('category.all')+" ( " + @blog.posts.count.to_s + " )"  %>
+<%= button_li str_all,settings_blog_path%>
+<!--cate_each-->
+<% @blog.categories.each do |c|%>
+<% cc = c.name.to_s + " ( "+ c.posts.count.to_s + " )" %>
+<%= button_li cc,settings_blog_path(@blog,category_id: c.id)%>
+<%end%>
+<!--cate_nil-->
+<% str_nil = t('category.nil')+" ( " + @cat_nil.to_s + " )" if @cat_nil > 0 %>
+<%= button_li str_nil,settings_blog_path(@blog,category_id: "null") if @cat_nil > 0 %>
 
+<!--Posts list-->
+<p><%= paginate @posts %></p>
 <table class="table table-hover">
-  <thead>
+  <thead><!--title and new post-->
     <tr>
-      <td><h1><%= Post.human_attribute_name(:title) %></h1></td>
-      <td><%= gly_icon t('crud.new!',resource: Post.model_name.human),"pencil","btn btn-lg btn-success",new_settings_blog_post_path(@blog)%></td>
+      <td style="width:80%"><h1><%= Post.human_attribute_name(:title) %></h1></td>
+      <td style="width:20%"><%= gly_icon t('crud.new!',resource: Post.model_name.human),new_settings_blog_post_path(@blog),"pencil","btn-lg btn-success"%></td>
     </tr>
   </thead>
+
   <tbody>
       <% @posts.each do |post| %>
         <tr>
-          <td style="width:80%" class="list-group">
+          <td style="width:80%" class="list-group"><!--all post-->
             <div >
               <%= link_to post_url(post,subdomain: @blog.subdomain),class: "list-group-item" do %>
                 <h4 class="list-group-item-heading"><%= post.title%></h4>
-                <p class="list-group-item-text">
-                  <%= post.content.slice(1..100)%> ......
-                  <br><%= t('crud.updated')%> : <%= post.updated_at%>
-                  <br><%= t('crud.created')%> : <%= post.created_at%>
-                </p>
+                <span class="glyphicon glyphicon-search">【<%= Category.where(id:post.category_id).pluck(:name).first%>】</span>
+                  【<%= t('post.view_count')%> : <%= post.view_count%>】
+                  【<%= t('crud.updated')%> : <%= post.updated_at%>】
+                  【<%= t('crud.created')%> : <%= post.created_at%>】            
+                <hr>
+                <p class="list-group-item-text"><%= post.content.slice(0..150)%> ......</p>
               <%end%>
             </div> 
           </td>
-          <td style="width:20%">
-            <%= gly_icon t('crud.edit'),"edit","btn btn-primary btn-lg",edit_settings_blog_post_path(@blog,post)%>
-            <%= gly_icon '',"trash","btn btn-danger btn-lg",[@blog,post],method: :delete, data: {confirm: t('message.are_you_sure')}%>
+          <td style="width:20%"><!--action button: edit / delete-->
+            <%= gly_icon t('crud.edit'),edit_settings_blog_post_path(@blog,post),"edit","btn-primary btn-lg"%>
+            <%= gly_icon '',[@blog,post],"trash","btn-danger btn-lg",method: :delete,data: {confirm: t('message.are_you_sure')}%>
           </td>
         </tr>
       <% end %>
   </tbody>
 </table>
-
-
 <%= paginate @posts %>

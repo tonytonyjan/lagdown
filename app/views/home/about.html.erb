@@ -10,7 +10,6 @@
           <dd><%=@user.send(user_attr)%></dd>
         </dl>
         <%end%>
-
       </div><!--bg color-->
     </div><!--col-sm-->
 
@@ -26,10 +25,10 @@
 
       <% @blogs.each do |each_blog|%>
         <tr>
-          <td><%= link_to each_blog.name, settings_blog_path(each_blog),target: "_blank" %></td>
-          <td><%= link_to each_blog.subdomain,root_url(host: Settings.host, subdomain: each_blog.subdomain),target: "_blank"%></td>
-          <td><%=each_blog.created_at.+(8.hour).strftime("%F %T") %></td>
-          <td><%=each_blog.updated_at.+(8.hour).strftime("%F %T") %></td>
+          <td class="col-md-4"><%= link_to each_blog.name, settings_blog_path(each_blog),target: "_blank" %></td>
+          <td class="col-md-2"><%= link_to each_blog.subdomain,root_url(host: Settings.host, subdomain: each_blog.subdomain),target: "_blank"%></td>
+          <td class="col-md-3"><%=each_blog.created_at.+(8.hour).strftime("%F %T") %></td>
+          <td class="col-md-3"><%=each_blog.updated_at.+(8.hour).strftime("%F %T") %></td>
         </tr>
       <%end%>
       </table>
@@ -38,18 +37,19 @@
         
       <table class="table table-hover">
       <tr class="info">
-        <% %i[title blog updated_at].each do |post_attr| %>   
-          <td><%= Post.human_attribute_name(post_attr)%></td>
+        <% %i[title blog view_count updated_at].each do |post_attr| %>
+          <td ><%= Post.human_attribute_name(post_attr)%></td>
         <%end%>
       </tr>
       
         <% @recent.each do |rec_post|%>
           <% post_blog = Blog.find(rec_post.blog_id) %>
         <tr>
-          <td><%= link_to rec_post.title,post_url(rec_post, subdomain: post_blog.subdomain),target: "_blank"%>
+          <td class="col-md-5"><%= link_to rec_post.title,post_url(rec_post, subdomain: post_blog.subdomain),target: "_blank"%>
             <span class="label label-danger"><%= "New" if rec_post.created_at > (Time.now - 1.hour) %></span></td>
-          <td><%= link_to post_blog.name, root_url(host: Settings.host, subdomain: post_blog.subdomain),target: "_blank"%></td>
-          <td><%= rec_post.updated_at.+(8.hour).strftime("%p %I:%M / %F")%></td>
+          <td class="col-md-3"><%= link_to post_blog.name, root_url(host: Settings.host, subdomain: post_blog.subdomain),target: "_blank"%></td>
+          <td class="col-md-1 text-center"><%= rec_post.view_count%></td>
+          <td class="col-md-2"><%= rec_post.updated_at.+(8.hour).strftime("%m/%d - %R ")%></td>
         </tr>
         <%end%>
 
